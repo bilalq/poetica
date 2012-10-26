@@ -1,10 +1,8 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Home extends CI_Controller {
+class Home extends MY_Controller {
 
   public function index() {
-    $this->template
-      ->set_layout('default')
-      ->build('home');
+    $this->template->build('home/index');
   }
 }

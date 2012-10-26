@@ -52,8 +52,7 @@ $autoload['packages'] = array();
 |	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
 */
 
-//$autoload['libraries'] = array('parser');
-$autoload['libraries'] = array('template');
+$autoload['libraries'] = array('parser');
 
 
 /*
@@ -111,6 +110,17 @@ $autoload['language'] = array();
 */
 
 $autoload['model'] = array();
+
+
+/*
+| -------------------------------------------------------------------
+|  Auto-load Sparks
+| -------------------------------------------------------------------
+|
+|
+*/
+
+$autoload['sparks'] = array('template/1.9.0');
 
 
 /* End of file autoload.php */

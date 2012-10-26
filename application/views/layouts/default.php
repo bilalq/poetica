@@ -15,14 +15,14 @@
   
   <!-- Included CSS Files (Uncompressed) -->
   <!--
-  <link rel="stylesheet" href="stylesheets/foundation.css">
+  <link rel="stylesheet" href="public/stylesheets/foundation.css">
   -->
   
   <!-- Included CSS Files (Compressed) -->
-  <link rel="stylesheet" href="stylesheets/foundation.min.css">
-  <link rel="stylesheet" href="stylesheets/app.css">
+  <link rel="stylesheet" href="public/stylesheets/foundation.min.css">
+  <link rel="stylesheet" href="public/stylesheets/app.css">
 
-  <script src="javascripts/modernizr.foundation.js"></script>
+  <script src="public/javascripts/modernizr.foundation.js"></script>
 
   <!-- IE Fix for HTML5 Tags -->
   <!--[if lt IE 9]>
@@ -39,10 +39,10 @@
   </div>
   
   <!-- Included JS Files (Compressed) -->
-  <script src="javascripts/jquery.js"></script>
-  <script src="javascripts/foundation.min.js"></script>
+  <script src="public/javascripts/jquery.js"></script>
+  <script src="public/javascripts/foundation.min.js"></script>
   
   <!-- Initialize JS Plugins -->
-  <script src="javascripts/app.js"></script>
+  <script src="public/javascripts/app.js"></script>
 </body>
 </html>

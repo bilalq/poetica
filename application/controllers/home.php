@@ -3,8 +3,8 @@
 class Home extends CI_Controller {
 
   public function index() {
-    //$this->load->view('home');
-    $this->template->set_layout('default');
-    $this->template->build('home');
+    $this->template
+      ->set_layout('default')
+      ->build('home');
   }
 }

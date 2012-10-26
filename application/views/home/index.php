@@ -1,3 +1,4 @@
 <div class="panel">
-<?php echo gravatar( 'bilalquadri92@gmail.com', 100 )?>
+word
+<?php echo gravatar('bilalquadri92@gmail.com', 84); ?>
 </div>

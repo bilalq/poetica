@@ -3,7 +3,7 @@
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Template Library</title>
+<title>Template Library &#8250; Layouts</title>
 
 <style type='text/css' media='all'>@import url('./userguide.css');</style>
 <link rel='stylesheet' type='text/css' media='all' href='../userguide.css' />
@@ -25,7 +25,7 @@
 <table cellpadding="0" cellspacing="0" border="0" style="width:100%">
 <tr>
 <td><h1>Documentation</h1></td>
-<td id="breadcrumb_right">Author:<a href="http://philsturgeon.co.uk">Phil Sturgeon</a></td>
+<td id="breadcrumb_right">Author:<a href="http://philsturgeon.co.uk/">Phil Sturgeon</a></td>
 </tr>
 </table>
 </div>
@@ -37,7 +37,8 @@
 <tr>
 <td id="breadcrumb">
 <a href="http://philsturgeon.co.uk/code/codeigniter-template">Template</a> &nbsp;&#8250;&nbsp;
-Documentation
+<a href="index.html">Documentation</a> &nbsp;&#8250;&nbsp;
+Partials
 </td>
 </tr>
 </table>
@@ -50,46 +51,60 @@ Documentation
 <div id="content">
 	<h1>Template</h1>
 
-	<p>The Template library helps your build complex views with CodeIgniter. It has logic to work with themes & modules and helps add your title, meta-data, breadcrumbs and partial views.</p>
+	<h2>Partials</h2>
 
-	<a name="license"></a>
-	<h2>License</h2>
+	<p>
+		When you start creating multiple <a href="layouts.html">Layouts</a> you will soon start to realize that while they are not all the same they will share lots of stuff. Often the
+		header will be different but there could be two columns instead of one, etc.
+	</p>
 
-	<p>Template is released under the "Don't Be a Dick Public License", which you can read in all its glory here: <a href="http://philsturgeon.co.uk/code/dbad-license" target="_blank">http://philsturgeon.co.uk/code/dbad-license</a></p>
+	<p>
+		Partials can go anywhere in your views folder (or themes and modules view folder) like <dfn>application/views/header.php</dfn>.
+	</p>
 
-	<a name="install"></a>
-	<h2>Installation</h2>
+	<p>
+		To attach a Partial (from a view file) to a Layout you will need to use the <kbd><a href="library.html#set_partial">set_partial()</a></kbd> method.
+		Give the partial name, then enter it's path and optionally give it some special data that will only exist for that partial.
+	</p>
 
-	<ol>
-		<li>Download the latest version: <a href="http://github.com/philsturgeon/codeigniter-template/zipball/master">http://github.com/philsturgeon/codeigniter-template/zipball/master</a></li>
-		<li>Copy the files from this package to the correspoding folder in your application folder. For example, copy Template/config/template.php to application/config/template.php.</li>
-	</ol>
+	<p>
+		You can also inject strings into the template as partials using the <kbd><a href="library.html#inject_partial">inject_partial()</a></kbd> method.
+		This method is almost identical to <kbd><a href="library.html#set_partial">set_partial()</a></kbd> but the second argument is a HTML string and not a view file.
+	</p>
 
-	<a name="loading"></a>
-	<h2>Loading Template</h2>
+	<h3>Example (PHP)</h3>
 
-	<p>You load Template just link any other library:</p>
-	<pre>$this->load->library('template');</pre>
+	<p>The easiest layout in the world is this:</p>
 
-	<p>You can also autoload the library.</p>
+	<pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;?php echo $template['partials']['header']; ?&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		&lt;h1&gt;&lt;?php echo $template['title']; ?&gt;&lt;/h1&gt;
+		&lt;?php echo $template['body']; ?&gt;
+	&lt;/body&gt;
+&lt;/html&gt;</pre>
 
-	<a name="config"></a>
-	<h2>Configuration Options</h2>
+	<h3>Example (Parser)</h3>
 
-	<p>To change configuration options simply edit the application/config/template.php file.</p>
+	<p>Using the parser syntax you can do this instead:</p>
 
-	<h3>Config</h3>
+	<pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		{$template.partials.header}
+	&lt;/head&gt;
+	&lt;body&gt;
+		&lt;h1&gt;{$template.title}&lt;/h1&gt;
+		{$template.body}
+	&lt;/body&gt;
 
-	<p>Edit the template $config array as needed:</p>
-	<ul>
-		<li><var>$config['parser_enabled']</var> - When set to <kbd>TRUE</kbd> this will use the Parser library.</li>
-		<li><var>$config['parser_body_enabled']</var> - The parser can be enabled for the layouts but disabled for the body view files by setting this to <kbd>FALSE</kbd>.</li>
-		<li><var>$config['title_separator']</var> - What string should be used to separate title segments sent via <kbd>$this->template->title('Foo', 'Bar');</kbd>.</li>
-		<li><var>$config['theme']</var> - Which theme should be used by default, empty for none.</li>
-		<li><var>$config['theme_locations']</var> - Store your themes in many places, similar to the way "Application Packages" are used.</li>
-	</ul>
+&lt;/html&gt;</pre>
 
 	<p class="important"><strong>NOTE:</strong> You can only use the Parser if you have also installed a Parser extensions like <a href="http://philsturgeon.co.uk/code/codeigniter-dwoo" target="_blank">codeigniter-dwoo</a>. This is because CI_Parser does not play nicely with arrays.</p>
+
 
 </div>
 <!-- END CONTENT -->

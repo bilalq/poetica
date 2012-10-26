@@ -68,7 +68,10 @@ $autoload['libraries'] = array(
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('gravatar');
+$autoload['helper'] = array(
+  'date',
+  'gravatar'
+);
 
 
 /*

@@ -120,7 +120,10 @@ $autoload['model'] = array();
 |
 */
 
-$autoload['sparks'] = array('template/1.9.0');
+$autoload['sparks'] = array(
+  'template/1.9.0',
+  'gravatar/1.1.1'
+);
 
 
 /* End of file autoload.php */

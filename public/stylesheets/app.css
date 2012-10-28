@@ -4,21 +4,22 @@
 
 body {
   background: url(/public/images/cream_dust_@2X.png);
+  margin-top: 70px;
 }
 
 #logo {
   /*font-family: Helvetica Nueu, Arial, sans-serif;*/
-  font-size: 30px;
+  font-size: 32px;
   font-weight: 100;
   cursor: pointer;
   color: #ffffff;
 }
 
 img {
-  border-radius: 4px;
-  -moz-box-shadow: -2px -2px 4px -2px #666;
-  -webkit-box-shadow: -2px -2px 4px -2px #666;
-  box-shadow: -2px -2px 4px -2px #666;
+  border-radius: 3px;
+  -moz-box-shadow: -2px -2px 4px -2px #999;
+  -webkit-box-shadow: -2px -2px 4px -2px #999;
+  box-shadow: -2px -2px 4px -2px #999;
 }
 
 .top-bar {
@@ -26,6 +27,33 @@ img {
   margin-bottom: 50px;
 }
 
-#navigation {
-  margin-bottom: 70px;
+pre.poem {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-weight: 200;
+}
+
+p.author {
+  font-weight: 200;
+  font-style: italic;
+}
+
+h3 {
+  font-weight: 300;
+  color: #666;
+}
+
+.panel {
+  border-radius: 5px;
+}
+
+.comments {
+  /*margin: 20px;*/
+  border: 1px solid #999;
+  min-height: 380px;
+  max-height: 450px;
+  overflow-y: scroll;
+}
+
+.entry {
+  margin-bottom: 30px !important;
 }

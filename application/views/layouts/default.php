@@ -12,12 +12,15 @@
   <meta name="viewport" content="width=device-width" />
 
   <title>Poetica</title>
-  
+
   <!-- Included CSS Files (Uncompressed) -->
   <!--
   <link rel="stylesheet" href="public/stylesheets/foundation.css">
   -->
-  
+
+  <!-- Open Web Fonts -->
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'>
+
   <!-- Included CSS Files (Compressed) -->
   <link rel="stylesheet" href="public/stylesheets/foundation.min.css">
   <link rel="stylesheet" href="public/stylesheets/app.css">
@@ -49,11 +52,11 @@
       <?php echo $template['body'] ?>
     </div>
   </div>
-  
+
   <!-- Included JS Files (Compressed) -->
   <script src="public/javascripts/jquery.js"></script>
   <script src="public/javascripts/foundation.min.js"></script>
-  
+
   <!-- Initialize JS Plugins -->
   <script src="public/javascripts/app.js"></script>
 </body>

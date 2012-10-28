@@ -11,7 +11,7 @@
   <!-- Set the viewport width to device width for mobile -->
   <meta name="viewport" content="width=device-width" />
 
-  <title>Welcome to Foundation</title>
+  <title>Poetica</title>
   
   <!-- Included CSS Files (Uncompressed) -->
   <!--
@@ -32,6 +32,18 @@
 </head>
 <body>
 
+  <!-- NAV BAR -->
+  <div id="navigation">
+    <nav class="top-bar fixed">
+      <div class="row">
+        <a id="logo" class="name">Poetica</a>
+        <ul>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+<!-- CONTENT -->
   <div class="row">
     <div class="twelve columns">
       <?php echo $template['body'] ?>

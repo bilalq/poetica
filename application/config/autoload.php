@@ -55,7 +55,8 @@ $autoload['packages'] = array();
 $autoload['libraries'] = array(
   'encrypt',
   'session',
-  'template',
+  'parser',
+  'template'
 );
 
 

@@ -30,6 +30,7 @@ img {
 pre.poem {
   font-family: "Helvetica Neue", Arial, sans-serif;
   font-weight: 200;
+  overflow-x: scroll;
 }
 
 p.author {
@@ -49,7 +50,7 @@ h3 {
 .comments {
   /*margin: 20px;*/
   border: 1px solid #999;
-  min-height: 380px;
+  min-height: 100px;
   max-height: 450px;
   overflow-y: scroll;
 }

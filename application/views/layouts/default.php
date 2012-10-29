@@ -37,40 +37,61 @@
 </head>
 <body>
 
+
   <!-- NAV BAR -->
-  <div id="navigation">
-    <nav class="top-bar fixed">
-      <div class="row">
+  <div class="row">
+    <div class="twelve columns">
+      <div class="fixed contain-to-grid">
+        <nav class="top-bar">
 
-        <a id="logo" href="/" class="left name">Poetica</a>
+          <!-- TITLE AREA -->
+          <ul>
+            <li class="name">
+                <a id="logo" href="/">
+                  Poetica
+                </a>
+            </li>
+            <li class="toggle-topbar"><a href="#"></a></li>
+          </ul>
 
-        <ul class="right">
-          <li class="has-dropdown">
-          <a id="menu-bar"><?=gravatar("bilalquadri92@gmail.com", 35)?> Bilal Quadri</a>
-            <ul class="dropdown">
-              <li><a href="/profile">Profile</a></li>
-              <li><a href="/settings">Settings</a></li>
-              <li><a href="/privacy">Privacy</a></li>
+          <!-- RIGHT NAV SECTION -->
+          <section>
+            <ul class="right">
+              <li class="divider"></li>
+              <li class="has-dropdown">
+                <a id="menu-bar"><?=gravatar("bilalquadri92@gmail.com", 35)?> Bilal Quadri</a>
+                <ul class="dropdown">
+                  <li><label style="cursor: default;">Go to</label></li>
+                  <li><a href="/profile">Profile</a></li>
+                  <li><a href="/settings">Settings</a></li>
+                  <li><a href="/privacy">Privacy</a></li>
+                </ul>
+              </li>
+              <li class="divider hide-for-small"></li>
             </ul>
-          </li>
-        </ul>
+          </section>
 
+        </nav>
       </div>
-    </nav>
+    </div>
   </div>
 
-<!-- CONTENT -->
+
+  <!-- CONTENT -->
   <div class="row">
     <div class="twelve columns">
       <?php echo $template['body'] ?>
     </div>
   </div>
 
+
   <!-- Included JS Files (Compressed) -->
   <script src="public/javascripts/jquery.js"></script>
   <script src="public/javascripts/foundation.min.js"></script>
 
+
   <!-- Initialize JS Plugins -->
   <script src="public/javascripts/app.js"></script>
+
 </body>
 </html>

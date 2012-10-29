@@ -60,12 +60,39 @@ h3 {
 }
 
 #menu-bar {
-  padding-top: 4px;
   font-weight: 200;
+  padding-top: 4px;
+}
+
+.contain-to-grid {
+  background-color: #444;
 }
 
 #menu-bar img{
   margin-top: 2px;
   box-shadow: none;
   border-radius: 2px;
+}
+
+li.name a:hover {
+  background-color: #333;
+}
+
+@media only screen and (max-width: 940px) {
+  .top-bar ul li.has-dropdown.moved .dropdown li:not(.title) a {
+    padding: 6px 22.5px;
+  }
+
+  .top-bar ul li.name {
+    background: #444;
+    }
+
+  .top-bar ul > li.has-dropdown a:hover {
+    background: #333;
+    cursor: pointer;
+  }
+
+  .top-bar ul li.toggle-topbar:hover {
+    background: #333;
+  }
 }

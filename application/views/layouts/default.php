@@ -14,15 +14,10 @@
   <title>Poetica</title>
   <link rel="icon" type="image/png" href="public/favicon.png" />
 
-  <!-- Included CSS Files (Uncompressed) -->
-  <!--
-  <link rel="stylesheet" href="public/stylesheets/foundation.css">
-  -->
-
   <!-- Open Web Fonts -->
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'>
 
-  <!-- Included CSS Files (Compressed) -->
+  <!-- CSS Files -->
   <link rel="stylesheet" href="public/stylesheets/foundation.min.css">
   <link rel="stylesheet" href="public/stylesheets/app.css">
 
@@ -85,7 +80,7 @@
   </div>
 
 
-  <!-- Included JS Files (Compressed) -->
+  <!-- JS Files -->
   <script src="public/javascripts/jquery.js"></script>
   <script src="public/javascripts/foundation.min.js"></script>
 

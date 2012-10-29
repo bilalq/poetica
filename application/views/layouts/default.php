@@ -39,9 +39,20 @@
   <div id="navigation">
     <nav class="top-bar fixed">
       <div class="row">
-        <a id="logo" class="name">Poetica</a>
-        <ul>
+
+        <a id="logo" href="/" class="left name">Poetica</a>
+
+        <ul class="right">
+          <li class="has-dropdown">
+          <a id="menu-bar"><?=gravatar("bilalquadri92@gmail.com", 35)?> Bilal Quadri</a>
+            <ul class="dropdown">
+              <li><a href="/profile">Profile</a></li>
+              <li><a href="/settings">Settings</a></li>
+              <li><a href="/privacy">Privacy</a></li>
+            </ul>
+          </li>
         </ul>
+
       </div>
     </nav>
   </div>

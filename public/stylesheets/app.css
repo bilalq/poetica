@@ -58,3 +58,14 @@ h3 {
 .entry {
   margin-bottom: 30px !important;
 }
+
+#menu-bar {
+  padding-top: 4px;
+  font-weight: 200;
+}
+
+#menu-bar img{
+  margin-top: 2px;
+  box-shadow: none;
+  border-radius: 2px;
+}

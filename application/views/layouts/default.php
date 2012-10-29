@@ -12,6 +12,7 @@
   <meta name="viewport" content="width=device-width" />
 
   <title>Poetica</title>
+  <link rel="icon" type="image/png" href="public/favicon.png" />
 
   <!-- Included CSS Files (Uncompressed) -->
   <!--
@@ -24,6 +25,7 @@
   <!-- Included CSS Files (Compressed) -->
   <link rel="stylesheet" href="public/stylesheets/foundation.min.css">
   <link rel="stylesheet" href="public/stylesheets/app.css">
+
 
   <script src="public/javascripts/modernizr.foundation.js"></script>
 

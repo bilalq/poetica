@@ -60,6 +60,8 @@
                   <li><a href="/profile">Profile</a></li>
                   <li><a href="/settings">Settings</a></li>
                   <li><a href="/privacy">Privacy</a></li>
+                  <li class="divider"></li>
+                  <li><a href="/logout">Logout</a></li>
                 </ul>
               </li>
               <li class="divider hide-for-small"></li>
@@ -88,9 +90,9 @@
   <!-- Initialize JS Plugins -->
   <script src="public/javascripts/app.js"></script>
 
-<div class="two columns">
-  <div class="panel">Time to render: {elapsed_time}</div>
-</div>
+  <div class="two columns">
+    <div class="panel">Time to render: {elapsed_time}</div>
+  </div>
 
 
 </body>

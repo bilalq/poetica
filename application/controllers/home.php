@@ -9,4 +9,8 @@ class Home extends MY_Controller {
   public function error_page() {
     $this->template->build('error_page');
   }
+
+  public function logout() {
+    $this->template->build('home/index');
+  }
 }

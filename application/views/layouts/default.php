@@ -77,7 +77,7 @@
   <!-- CONTENT -->
   <div class="row">
     <div class="twelve columns">
-      <?php echo $template['body'] ?>
+      <?= $template['body']; ?>
     </div>
   </div>
 

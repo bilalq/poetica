@@ -28,8 +28,15 @@
 
 			while($db_row = mysql_fetch_assoc($result))
 			{
-				$xml .= "<".
+				$xml .= "<Users>";
 
+				foreach($result_array as $key =>$value)
+				{
+					$xml .= "<$key>";
+					$xml .= "<![CDATA[$value]]>"
+					$xml .= "</$key>";
+				}
+				$xml .="</Users>"
 			}
 		}
 		else
@@ -40,9 +47,13 @@
 		die("Database doesn't exist". mysql_error());
 	}
 
-	mysql_close($con);
+	$xml .="</$root_element>";
 
-	$file_handle = fopen("C:\Users\Zigfried\Desktop".$config['db_name'].".xml", "w");
+	mysql_close($con);
+	header("Content-Type:text/xml");
+	echo $xml;
+
+	/*$file_handle = fopen("C:\Users\Zigfried\Desktop".$config['db_name'].".xml", "w");
 	fwrite($file_handle, $xml);
-	fclose($file_handle);
+	fclose($file_handle);*/
 ?>

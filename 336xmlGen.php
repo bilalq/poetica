@@ -1,18 +1,12 @@
 <?php
 	
-	//database connection
-	$config['mysql_host'] = "cs336-6.rutgers.edu";
-	$config['mysql_user'] = "csuser";
-	$config['mysql_pass'] = "cs392828";
-	$config['db_name'] = "poetica";
-
 	//start with XML header
 	$xml = "<?xml version=\"1.0\" encoding=\"?TF-8\"?>";
 	$root_element = $config['db_name'];
 	$xml .="<$root_element>";
 
-	$con = mysql_connect($config['mysql_host'], $config['mysql_user'], $config['mysql_pass']);
-	$db_found = mysql_select_db($config['db_name'], $con);
+	$con = mysql_connect('cs336-9.rutgers.edu', 'csuser', 'cs02356d');
+	$db_found = mysql_select_db('poetica', $con);
 
 	if($db_found){
 

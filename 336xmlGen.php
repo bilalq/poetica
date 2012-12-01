@@ -2,7 +2,7 @@
 	
 	//start with XML header
 	$xml = "<?xml version=\"1.0\" encoding=\"?TF-8\"?>";
-	$root_element = $config['db_name'];
+	$root_element = 'poetica';
 	$xml .="<$root_element>";
 
 	$con = mysql_connect('cs336-9.rutgers.edu', 'csuser', 'cs02356d');
@@ -27,10 +27,10 @@
 				foreach($result_array as $key =>$value)
 				{
 					$xml .= "<$key>";
-					$xml .= "<![CDATA[$value]]>"
+					$xml .= "<![CDATA[$value]]>";
 					$xml .= "</$key>";
 				}
-				$xml .="</Users>"
+				$xml .="</Users>";
 			}
 		}
 		else

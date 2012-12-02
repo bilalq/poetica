@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Users>
+<User userID="1">
+<FirstName>Alexio</FirstName>
+<LastName>Mota</LastName>
+<EmailAddress>alexmota@poetica.com</EmailAddress>
+<Education>
+<SchoolName>Princeton</SchoolName>
+<Degree>Philosophy</Degree>
+<Year>2015</Year>
+</Education>
+<WorkExperience>
+<CompanyName>Meanface</CompanyName>
+<Position>Web Designer</Position>
+<From>2012-11-28</From>
+<To>2013-11-28</To>
+</WorkExperience>
+</User>
+<User userID="1">
+<FirstName>Alexio</FirstName>
+<LastName>Mota</LastName>
+<EmailAddress>alexmota@poetica.com</EmailAddress>
+<Education>
+<SchoolName>Rutgers</SchoolName>
+<Degree>Computer Science</Degree>
+<Year>2013</Year>
+</Education>
+<WorkExperience>
+<CompanyName>Meanface</CompanyName>
+<Position>Web Designer</Position>
+<From>2012-11-28</From>
+<To>2013-11-28</To>
+</WorkExperience>
+</User>
+<User userID="2">
+<FirstName>Bilal</FirstName>
+<LastName>Quadri</LastName>
+<EmailAddress>bilalquadri@poetica.com</EmailAddress>
+<Education>
+<SchoolName>Rutgers</SchoolName>
+<Degree>Computer Science</Degree>
+<Year>2013</Year>
+</Education>
+<WorkExperience>
+<CompanyName>Walking</CompanyName>
+<Position>Web Developer</Position>
+<From>2012-11-28</From>
+<To>2013-11-28</To>
+</WorkExperience>
+</User>
+<User userID="3">
+<FirstName>Hua</FirstName>
+<LastName>Yan</LastName>
+<EmailAddress>huayang@poetica.com</EmailAddress>
+<Education>
+<SchoolName>Rutgers</SchoolName>
+<Degree>Computer Science</Degree>
+<Year>2013</Year>
+</Education>
+<WorkExperience>
+<CompanyName>Lin Town</CompanyName>
+<Position>Linux Developer</Position>
+<From>2012-11-28</From>
+<To>2013-11-28</To>
+</WorkExperience>
+</User>
+<User userID="12">
+<FirstName>Elon</FirstName>
+<LastName>Musk</LastName>
+<EmailAddress>elonmusk@spacex.com</EmailAddress>
+<Education>
+<SchoolName>Pokemon Center</SchoolName>
+<Degree>Pokemon Master</Degree>
+<Year>2000</Year>
+</Education>
+<WorkExperience>
+<CompanyName>Pokemon Universe</CompanyName>
+<Position>Pokemon Trainer</Position>
+</WorkExperience>
+</User>
+<User userID="13">
+<FirstName>Misty</FirstName>
+<LastName>Ketchup</LastName>
+<EmailAddress>mistyketchup@pokemon.com</EmailAddress>
+<Education>
+<SchoolName>Digi Universe</SchoolName>
+<Degree>Digimon Trainer</Degree>
+<Year>2015</Year>
+</Education>
+<WorkExperience>
+<CompanyName>Digital World</CompanyName>
+<Position>Digimon Trainer</Position>
+<From>2006-07-14</From>
+<To>2015-09-09</To>
+</WorkExperience>
+</User>
+</Users>

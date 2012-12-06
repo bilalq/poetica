@@ -78,6 +78,20 @@
 <Position>Pokemon Trainer</Position>
 </WorkExperience>
 </User>
+<User userID="12">
+<FirstName>Elon</FirstName>
+<LastName>Musk</LastName>
+<EmailAddress>elonmusk@spacex.com</EmailAddress>
+<Education>
+<SchoolName>rutgers</SchoolName>
+<Degree>Biology</Degree>
+<Year>2015</Year>
+</Education>
+<WorkExperience>
+<CompanyName>Pokemon Universe</CompanyName>
+<Position>Pokemon Trainer</Position>
+</WorkExperience>
+</User>
 <User userID="13">
 <FirstName>Misty</FirstName>
 <LastName>Ketchup</LastName>
@@ -92,6 +106,166 @@
 <Position>Digimon Trainer</Position>
 <From>2006-07-14</From>
 <To>2015-09-09</To>
+</WorkExperience>
+</User>
+<User userID="13">
+<FirstName>Misty</FirstName>
+<LastName>Ketchup</LastName>
+<EmailAddress>mistyketchup@pokemon.com</EmailAddress>
+<Education>
+<SchoolName>rutgers</SchoolName>
+<Degree>Finance</Degree>
+<Year>2015</Year>
+</Education>
+<WorkExperience>
+<CompanyName>Digital World</CompanyName>
+<Position>Digimon Trainer</Position>
+<From>2006-07-14</From>
+<To>2015-09-09</To>
+</WorkExperience>
+</User>
+<User userID="4">
+<FirstName>Billy</FirstName>
+<LastName>Lynch</LastName>
+<EmailAddress>billlynch@rutgers.edu</EmailAddress>
+<Education>
+<SchoolName>Opt School</SchoolName>
+<Degree>Biology</Degree>
+<Year>2014</Year>
+</Education>
+<WorkExperience>
+<CompanyName>Metrod PD</CompanyName>
+<Position>Police Office</Position>
+<From>2008-12-12</From>
+<To>2012-04-07</To>
+</WorkExperience>
+</User>
+<User userID="6">
+<FirstName>Scott</FirstName>
+<LastName>Rocker</LastName>
+<EmailAddress>scottrocker@rutgers.edu</EmailAddress>
+<Education>
+<SchoolName>rutgers</SchoolName>
+<Degree>Physics</Degree>
+<Year>2013</Year>
+</Education>
+<WorkExperience>
+<CompanyName>Rutgers</CompanyName>
+<Position>Web Designer</Position>
+<From>2008-12-12</From>
+<To>2012-04-07</To>
+</WorkExperience>
+</User>
+<User userID="7">
+<FirstName>Erik</FirstName>
+<LastName>Kamp</LastName>
+<EmailAddress>ekamp@rutgers.edu</EmailAddress>
+<Education>
+<SchoolName>rutgers</SchoolName>
+<Degree>Pharmacy</Degree>
+<Year>2014</Year>
+</Education>
+<WorkExperience>
+<CompanyName>Rutgers</CompanyName>
+<Position>Researcher</Position>
+<From>2008-12-12</From>
+<To>2012-04-07</To>
+</WorkExperience>
+</User>
+<User userID="8">
+<FirstName>Sean</FirstName>
+<LastName>Wilkins</LastName>
+<EmailAddress>swilkins@rutgers.edu</EmailAddress>
+<Education>
+<SchoolName>rutgers</SchoolName>
+<Degree>Chemistry</Degree>
+<Year>2014</Year>
+</Education>
+<WorkExperience>
+<CompanyName>Rutgers</CompanyName>
+<Position>Help Desk Support</Position>
+<From>2008-12-12</From>
+<To>2012-04-07</To>
+</WorkExperience>
+</User>
+<User userID="9">
+<FirstName>Scott</FirstName>
+<LastName>Rocker</LastName>
+<EmailAddress>scottrocker@rutgers.edu</EmailAddress>
+<Education>
+<SchoolName>rutgers</SchoolName>
+<Degree>History</Degree>
+<Year>2015</Year>
+</Education>
+<WorkExperience>
+<CompanyName>Stuff Ur Face</CompanyName>
+<Position>Waiter</Position>
+<From>2008-12-12</From>
+<To>2012-04-07</To>
+</WorkExperience>
+</User>
+<User userID="10">
+<FirstName>Eugene</FirstName>
+<LastName>Learnanate</LastName>
+<EmailAddress>eugeneL@rutgers.edu</EmailAddress>
+<Education>
+<SchoolName>rutgers</SchoolName>
+<Degree>Finance</Degree>
+<Year>2015</Year>
+</Education>
+<WorkExperience>
+<CompanyName>Stuff Ur Face</CompanyName>
+<Position>Bartender</Position>
+<From>2001-04-12</From>
+<To>2012-04-07</To>
+</WorkExperience>
+</User>
+<User userID="11">
+<FirstName>Byrant</FirstName>
+<LastName>Satterfield</LastName>
+<EmailAddress>bryantsat@rutgers.edu</EmailAddress>
+<Education>
+<SchoolName>rutgers</SchoolName>
+<Degree>Accounting</Degree>
+<Year>2015</Year>
+</Education>
+<WorkExperience>
+<CompanyName>Shoprite</CompanyName>
+<Position>Cashier</Position>
+<From>2001-04-12</From>
+<To>2010-04-07</To>
+</WorkExperience>
+</User>
+<User userID="14">
+<FirstName>Kari</FirstName>
+<LastName>Kamiya</LastName>
+<EmailAddress>karydigi@digimon.com</EmailAddress>
+<Education>
+<SchoolName>rutgers</SchoolName>
+<Degree>Computer Science</Degree>
+<Year>2015</Year>
+</Education>
+<WorkExperience>
+<CompanyName>Rutgers Recreation</CompanyName>
+<Position>Gym Support</Position>
+<From>2001-04-12</From>
+<To>2010-04-07</To>
+</WorkExperience>
+</User>
+<User userID="15">
+<FirstName>Kimberly</FirstName>
+<LastName>Hart</LastName>
+<EmailAddress>kimhart@pinkranger.net</EmailAddress>
+<Education>
+<SchoolName>rutgers</SchoolName>
+<Degree>Math</Degree>
+<Year>2015</Year>
+</Education>
+<WorkExperience>
+<CompanyName>Rutgers</CompanyName>
+<Position>SaS Dean</Position>
+<From>1991-04-12</From>
+<To>2010-04-07</To>
 </WorkExperience>
 </User>
 </Users>

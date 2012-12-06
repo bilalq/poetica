@@ -12,17 +12,17 @@
   <meta name="viewport" content="width=device-width" />
 
   <title>Poetica</title>
-  <link rel="icon" type="image/png" href="public/favicon.png" />
+  <link rel="icon" type="image/png" href="/public/favicon.png" />
 
   <!-- Open Web Fonts -->
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'>
 
   <!-- CSS Files -->
-  <link rel="stylesheet" href="public/stylesheets/foundation.min.css">
-  <link rel="stylesheet" href="public/stylesheets/app.css">
+  <link rel="stylesheet" href="/public/stylesheets/foundation.min.css">
+  <link rel="stylesheet" href="/public/stylesheets/app.css">
 
 
-  <script src="public/javascripts/modernizr.foundation.js"></script>
+  <script src="/public/javascripts/modernizr.foundation.js"></script>
 
   <!-- IE Fix for HTML5 Tags -->
   <!--[if lt IE 9]>
@@ -83,12 +83,12 @@
 
 
   <!-- JS Files -->
-  <script src="public/javascripts/jquery.js"></script>
-  <script src="public/javascripts/foundation.min.js"></script>
+  <script src="/public/javascripts/jquery.js"></script>
+  <script src="/public/javascripts/foundation.min.js"></script>
 
 
   <!-- Initialize JS Plugins -->
-  <script src="public/javascripts/app.js"></script>
+  <script src="/public/javascripts/app.js"></script>
 
   <div class="two columns">
     <div class="panel">Time to render: {elapsed_time}</div>

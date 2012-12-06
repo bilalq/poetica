@@ -49,6 +49,7 @@ $active_group = 'default';
 $active_record = FALSE;
 
 $db['default']['hostname'] = 'localhost';
+//$db['default']['hostname'] = 'http://cs336-9.rutgers.edu';
 $db['default']['username'] = 'csuser';
 $db['default']['password'] = 'cs02356d';
 $db['default']['database'] = 'poetica';

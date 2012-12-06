@@ -54,4 +54,8 @@ SELECT * FROM Employment;
 6 Web Designer  Rutgers metrod@gmail.com  50000 2008-12-12  2012-04-07
 7 Researcher  Rutgers research@rutgers.edu  50000 2008-12-12  2012-04-07
 8 Help Desk Support Rutgers support@rutgers.edu 50000 2008-12-12  2012-04-07
-
+9 Waiter  Stuff Ur Face waiter@stuffurface.com  50000 2008-12-12  2012-04-07
+10  Bartender Stuff Ur Face bartender@stuffurface.com 60000 2001-04-12  2012-04-07
+11  Cashier Shoprite  cashier@Shoprite.com  30000 2001-04-12  2010-04-07
+14  Gym Support Rutgers Recreation  gym@rutgers.edu 40000 2001-04-12  2010-04-07
+15  SaS Dean  Rutgers dean@rutgers.edu  90000 1991-04-12  2010-04-07

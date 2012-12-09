@@ -52,5 +52,27 @@ class User_model extends CI_Model {
     $result =  $query->result();
     return (! empty($result)) ? $result[0] : null;
   }
-
+  
+  public function get_profile($email) {
+	$query = $this->db->query(
+	  "SELECT * FROM `Users` u
+	   WHERE u.email=?",
+	  array($email)
+	);
+	
+	$result = $query->result();
+    return $result;
+  }
+  
+  public function get_follower($id) {
+	
+  }
+  
+  public function get_following($id) {
+	  
+  }
+  
+  public function get_post($id) {
+	  
+  }
 }

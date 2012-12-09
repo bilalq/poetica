@@ -6,8 +6,15 @@ class User extends MY_Controller {
     $this->template->build('home/index');
   }
 
-  public function profile($userid) {
-    echo $userid;
+  public function profile($p1) {
+    $this->load->helper('security');
+    echo do_hash($p1);
+    echo '<br>';
+    $this->load->model('User_model');
+    echo '<pre>';
+    var_dump($this->User_model->auth('bilalquadri@poetica.com', $p1));
+    echo '</pre>';
+
     die;
   }
 

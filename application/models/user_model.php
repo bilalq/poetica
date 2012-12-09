@@ -42,11 +42,12 @@ class User_model extends CI_Model {
 
     $this->load->helper('security');
 
-    $query = $this->db-query("
-      SELECT * FROM `Users` u WHERE
-      u.email=? AND e.password_hash=?",
-      array($email, do_hash($password))
-    );
+    $query=$this->db->query("SELECT * FROM Users");
+    //$query = $this->db->query("
+      //SELECT * FROM `Users` u WHERE
+      //u.email=? AND u.password_hash=?",
+      //array($email, do_hash($password))
+    //);
 
     return $query;
   }

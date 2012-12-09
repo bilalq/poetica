@@ -3,12 +3,13 @@
 class Profile extends MY_Controller {
 
   public function index() {
-    echo "Trying to see own profile. It's working (routewise).";
-    die;
+    $this->template->build('profile');
   }
 
   public function get_user_profile($profile_id) {
     var_dump($profile_id);
     die;
   }
+  
+  
 }

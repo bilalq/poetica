@@ -1,0 +1,106 @@
+==========================
+Poem Query by last name, alphabetically
+==========================
+SELECT u.first_name, u.last_name, p.votes, p.title, p.content, p.post_time, p.category
+FROM Poems p JOIN Users u ON p.user_id=u.user_id
+ORDER BY u.last_name;
+==========================
+Poem Query by last name
+==========================
+SELECT u.first_name, u.last_name, p.votes, p.title, p.content, p.post_time, p.category
+FROM Poems p JOIN Users u ON p.user_id=u.user_id
+WHERE u.last_name="Mota";
+==========================
+Poem Query by votes (highest -> lowest)
+==========================
+SELECT u.first_name, u.last_name, p.votes, p.title, p.content, p.post_time, p.category
+FROM Poems p JOIN Users u ON p.user_id=u.user_id
+ORDER BY p.votes DESC;
+==========================
+Poem Query by title, alphabetically
+==========================
+SELECT u.first_name, u.last_name, p.votes, p.title, p.content, p.post_time, p.category
+FROM Poems p JOIN Users u ON p.user_id=u.user_id
+ORDER BY p.title;
+==========================
+Poem Query by title
+==========================
+SELECT u.first_name, u.last_name, p.votes, p.title, p.content, p.post_time, p.category
+FROM Poems p JOIN Users u ON p.user_id=u.user_id
+WHERE p.title="Food";
+==========================
+Poem Query by post date (newest -> oldest)
+==========================
+SELECT u.first_name, u.last_name, p.votes, p.title, p.content, p.post_time, p.category
+FROM Poems p JOIN Users u ON p.user_id=u.user_id
+ORDER BY p.post_time DESC;
+==========================
+Poem Query by category, alphabetically
+==========================
+SELECT u.first_name, u.last_name, p.votes, p.title, p.content, p.post_time, p.category
+FROM Poems p JOIN Users u ON p.user_id=u.user_id
+ORDER BY p.category;
+==========================
+Poem Query by category
+==========================
+SELECT u.first_name, u.last_name, p.votes, p.title, p.content, p.post_time, p.category
+FROM Poems p JOIN Users u ON p.user_id=u.user_id
+WHERE p.category="Free Verse";
+==========================
+User Query by first name
+==========================
+SELECT first_name, last_name, email, birth_date, gender, num_address, street_address, town_address, state_address, country_address
+FROM Users
+WHERE first_name="Alexio";
+==========================
+User Query by last name
+==========================
+SELECT first_name, last_name, email, birth_date, gender, num_address, street_address, town_address, state_address, country_address
+FROM Users
+WHERE last_name="Mota";
+==========================
+User Query by email
+==========================
+SELECT first_name, last_name, email, birth_date, gender, num_address, street_address, town_address, state_address, country_address
+FROM Users
+WHERE email="alexmota@poetica.com";
+==========================
+User Query by comments
+==========================
+SELECT u.first_name, u.last_name, u.email, COUNT(p.title)
+FROM Users u INNER JOIN Poems p on u.user_id=p.user_id
+GROUP BY u.email;
+==========================
+User Query by major
+==========================
+SELECT u.first_name, u.last_name, u.email, e.school, e.major
+FROM Users u INNER JOIN Education e on u.user_id=e.user_id
+GROUP BY u.email
+ORDER BY e.major;
+==========================
+User Query, ordered by poem count, school count, majors count
+==========================
+SELECT u.first_name, u.last_name, u.email, p.count AS poems, COUNT(e.school) AS schools, COUNT(e.major) AS majors
+FROM Users u, Education e, (SELECT u.user_id AS user_id, COUNT(p.title) AS count 
+							FROM Users u, Poems p 
+							WHERE u.user_id=p.user_id
+							GROUP BY u.email) AS p
+WHERE u.user_id=p.user_id AND u.user_id=e.user_id
+GROUP BY u.email
+ORDER BY p.count, e.school, e.major;
+==========================
+User Query, ordered by poem count, follower count, school count, majors count
+==========================
+SELECT u.first_name, u.last_name, u.email, p.count AS poems, f.count AS followers, COUNT(e.school) AS schools, COUNT(e.major) AS majors
+FROM Users u, Education e, (SELECT u.user_id AS user_id, COUNT(p.title) AS count 
+							FROM Users u, Poems p 
+							WHERE u.user_id=p.user_id
+							GROUP BY u.email) AS p,
+						   (SELECT u.user_id AS user_id, COUNT(f.follower) as count
+						    FROM Users u, Followings f
+						    WHERE u.user_id=f.followee
+						    GROUP BY u.user_id) AS f
+WHERE u.user_id=p.user_id AND u.user_id=e.user_id AND u.user_id=f.user_id
+GROUP BY u.email
+ORDER BY p.count, f.user_id, e.school, e.major;
+

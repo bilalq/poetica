@@ -37,19 +37,20 @@ class User_model extends CI_Model {
 
   function auth($email, $password) {
     if (empty($email) || empty($password)) {
+    // Ensure that an email and password were provided
       return null;
     }
 
-    $this->load->helper('security');
+    $this->load->helper('security'); // For hash function
 
-    $query=$this->db->query("SELECT * FROM Users");
-    //$query = $this->db->query("
-      //SELECT * FROM `Users` u WHERE
-      //u.email=? AND u.password_hash=?",
-      //array($email, do_hash($password))
-    //);
+    $query = $this->db->query(
+      "SELECT * FROM `Users` u WHERE
+       u.email=? AND u.password_hash=?",
+      array($email, do_hash($password))
+    );
 
-    return $query;
+    $result =  $query->result();
+    return (! empty($result)) ? $result[0] : null;
   }
 
 }

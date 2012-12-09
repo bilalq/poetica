@@ -12,7 +12,7 @@ class User extends MY_Controller {
     echo '<br>';
     $this->load->model('User_model');
     echo '<pre>';
-    var_dump($this->User_model->auth('bilalquadri@poetica.com', $p1));
+    var_dump($this->User_model->auth('bilalquadri92@gmail.com', $p1));
     echo '</pre>';
 
     die;

@@ -96,3 +96,7 @@ li.name a:hover {
     background: #333;
   }
 }
+
+.fill-width {
+  width: 100%;
+}

@@ -14,7 +14,7 @@ class User_model extends CI_Model {
   var $state_address = null;
   var $country_address = null;
 
-  function create($user_data) {
+  public function create($user_data) {
     $this->load->helper('security');
 
     $user_data[3] = do_hash($user_data[3]);
@@ -35,7 +35,7 @@ class User_model extends CI_Model {
     }
   }
 
-  function auth($email, $password) {
+  public function auth($email, $password) {
     if (empty($email) || empty($password)) {
     // Ensure that an email and password were provided
       return null;

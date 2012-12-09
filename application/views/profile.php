@@ -15,8 +15,11 @@
     </div>
 </div>
 <div class="row">
-	<div class="two columns end">
-    	<h5>Activities:</h5>
+	<div class="five columns">
+    	<h5>Recent Poems:</h5>
+    </div>
+    <div class="seven columns">
+    	<h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Recent Posts:</h5>
     </div>
 </div>
 <div class="row panel">
@@ -57,13 +60,15 @@
         	<div class="one columns">
 			<b>Title: </b>
 			</div>
-			<div class="four columns">
+			<div class="eleven columns">
 			&nbsp;<?= $post->title; ?>
             </div>
+        </div>
+        <div class="row">
             <div class="one columns">
             <b>Arthur: </b>
 			</div>
-			<div class="four columns end">
+			<div class="eleven columns">
 			&nbsp;&nbsp;&nbsp;&nbsp;<?= $post->first_name; ?> <?= $post->last_name; ?>
             </div>
         </div>

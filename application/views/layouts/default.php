@@ -90,10 +90,5 @@
   <!-- Initialize JS Plugins -->
   <script src="/public/javascripts/app.js"></script>
 
-  <div class="two columns">
-    <div class="panel">Time to render: {elapsed_time}</div>
-  </div>
-
-
 </body>
 </html>

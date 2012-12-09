@@ -2,8 +2,7 @@
 
 class Home extends MY_Controller {
 
-  function __construct()
-  {
+  function __construct() {
     parent::__construct();
   }
 

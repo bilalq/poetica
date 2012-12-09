@@ -1,6 +1,6 @@
 <IfModule mod_rewrite.c>
   RewriteEngine on
-  RewriteCond $1 !^(index\.php|public|robots\.txt)
+  RewriteCond $1 !^(index\.php|example\.php|public|guide|robots\.txt)
   RewriteRule ^(.*)$ index.php/$1 [L]
 </IfModule>
 

@@ -14,14 +14,41 @@ class User_model extends CI_Model {
   var $state_address = null;
   var $country_address = null;
 
-  function insert_poem()
-  {
-    $this->first_name   = $this->input->post('first_name');
-    $this->last_name = $this->input->post('last_name');
-    $this->email = $this->input->post('email');
-    $this->password_hash = sha1($this->input->post('password'));
+  function create($user_data) {
+    $this->load->helper('security');
 
-    $this->db->insert('poem', $this);
+    $user_data[3] = do_hash($user_data[3]);
+
+    $registration_succeeded = $this->db->query("
+      INSERT INTO `Users` (`first_name`, `last_name`, `email`, `password_hash`, 
+      `birth_date`, `gender`, `num_address`, `street_address`, `town_address`, `state_address`, `country_address`)
+      VALUES
+      (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+      array($user_data)
+    );
+
+    if ($registration_succeeded) {
+      return auth($user_data[2], $user_data[3]);
+    }
+    else {
+      return null;
+    }
+  }
+
+  function auth($email, $password) {
+    if (empty($email) || empty($password)) {
+      return null;
+    }
+
+    $this->load->helper('security');
+
+    $query = $this->db-query("
+      SELECT * FROM `Users` u WHERE
+      u.email=? AND e.password_hash=?",
+      array($email, do_hash($password))
+    );
+
+    return $query;
   }
 
 }

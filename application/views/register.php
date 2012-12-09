@@ -6,11 +6,19 @@
       <input name="last_name" id="last_name" type="text" placeholder="Last Name">
       <input name="email" id="email" type="text" placeholder="Email address">
       <input name="password" id="password" type="password" placeholder="Password">
-      <!-- Need birthdate -->
+
+      <!-- Birthday picker -->
+      <input type="text" id="birthday" name="birthday" placeholder="Birthdate">
+      <script src="/public/javascripts/pikaday.min.js"></script>
+      <script>
+        var picker = new Pikaday({
+          field: document.getElementById('birthday')
+        });
+      </script>
 
       <label for="gender">Gender:</label>
       <select name="gender" id="gender">
-        <option value="0">Prefer not to say</option>
+        <option value="">Prefer not to say</option>
         <option value="1">Male</option>
         <option value="2">Female</option>
       </select>
@@ -33,13 +41,13 @@
         <div class="three columns">
           <select class="fill-width" name="state_address" id="state_address">
             <option value="">State</option>
-            <option value="AL">AL</option>
+            <?php include('partials/_states.php'); ?>
           </select>
         </div>
         <div class="three columns">
           <select class="fill-width" name="country_address" id="country_address">
             <option value="">Country</option>
-            <option value="">USA</option>
+            <option value="USA">USA</option>
           </select>
         </div>
       </div>

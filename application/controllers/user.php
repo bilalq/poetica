@@ -21,6 +21,7 @@ class User extends MY_Controller {
   public function register() {
     if($this->input->post()) {
       //Registration query
+      var_dump($this->input->post());die;
       $this->template->build('home/index');
     }
     else {

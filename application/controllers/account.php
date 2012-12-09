@@ -20,6 +20,8 @@ class Account extends MY_Controller {
       $this->template->build('home/index');
     }
     else {
+      date_default_timezone_set('America/New_York');
+      $this->template->append_metadata('<link rel="stylesheet" href="/public/stylesheets/pikaday.css">');
       $this->template->build('register');
     }
   }

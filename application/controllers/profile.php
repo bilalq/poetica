@@ -3,7 +3,12 @@
 class Profile extends MY_Controller {
 
   public function index() {
-    $this->template->build('profile');
+	$this->load->model("User_model");
+	$profile = $this->User_model->get_profile("huayang@poetica.com");
+	$profile = (array) $profile[0];
+	if (! empty($profile)) {
+    	$this->template->build('profile', array("profile" => $profile));
+	}
   }
 
   public function get_user_profile($profile_id) {

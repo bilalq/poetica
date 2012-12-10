@@ -15,25 +15,30 @@ class User_model extends CI_Model {
   var $country_address = null;
 
 
-  public function create($user_data) {
+  public function create($u) {
     $this->load->helper('security');
-
-    $user_data[3] = do_hash($user_data[3]);
 
     $registration_succeeded = $this->db->query("
       INSERT INTO `Users` (`first_name`, `last_name`, `email`, `password_hash`,
       `birth_date`, `gender`, `num_address`, `street_address`, `town_address`, `state_address`, `country_address`)
       VALUES
       (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-      array($user_data)
+      array(
+        $u['first_name'],
+        $u['last_name'],
+        $u['email'],
+        do_hash($u['password']),
+        $u['birthday'],
+        $u['gender'],
+        $u['num_address'],
+        $u['street_address'],
+        $u['town_address'],
+        $u['state_address'],
+        $u['country_address']
+      )
     );
 
-    if ($registration_succeeded) {
-      return auth($user_data[2], $user_data[3]);
-    }
-    else {
-      return null;
-    }
+    return $registration_succeeded;
   }
 
 
@@ -42,7 +47,7 @@ class User_model extends CI_Model {
       return null;
     }
 
-    $this->load->helper('security'); // For hash function
+    $this->load->helper('security');
 
     $query = $this->db->query(
       "SELECT * FROM `Users` u WHERE

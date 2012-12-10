@@ -53,19 +53,27 @@
           <!-- RIGHT NAV SECTION -->
           <section>
             <ul class="right">
-              <li class="divider"></li>
-              <li class="has-dropdown">
-                <a id="menu-bar"><?=gravatar("bilalquadri92@gmail.com", 35)?> Bilal Quadri</a>
-                <ul class="dropdown">
-                  <li><label style="cursor: default;">Go to</label></li>
-                  <li><a href="/profile">Profile</a></li>
-                  <li><a href="/settings">Settings</a></li>
-                  <li><a href="/privacy">Privacy</a></li>
-                  <li class="divider"></li>
-                  <li><a href="/logout">Logout</a></li>
-                </ul>
-              </li>
-              <li class="divider hide-for-small"></li>
+              <?php if($this->session->userdata('logged_in')): ?>
+                <li class="divider"></li>
+                <li class="has-dropdown">
+                <a id="menu-bar"><?=gravatar($this->session->userdata('email'), 35);?> 
+                  <?= $this->session->userdata('first_name'); ?> <?= $this->session->userdata('last_name'); ?>
+                </a>
+                  <ul class="dropdown">
+                    <li><label style="cursor: default;">Go to</label></li>
+                    <li><a href="/profile">Profile</a></li>
+                    <li><a href="/search/poems">Search Poems</a></li>
+                    <li><a href="/search/users">Search Users</a></li>
+                    <li class="divider"></li>
+                    <li><a href="/logout">Logout</a></li>
+                  </ul>
+                </li>
+                <li class="divider hide-for-small"></li>
+              <?php else: ?>
+                <li class="divider"></li>
+                <li><a href="/login">Login</a></li>
+                <li class="divider hide-for-small"></li>
+              <?php endif; ?>
             </ul>
           </section>
 

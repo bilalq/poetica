@@ -25,6 +25,8 @@ class Poem_model extends CI_Model {
     );
     return $insert;
   }
+
+
   function get_poems($authors, $titles, $popularity, $age, $abc){
 
     $authors = !isset($authors) ? $authors : '%';
@@ -97,5 +99,3 @@ class Poem_model extends CI_Model {
   }
 
 }
-
-

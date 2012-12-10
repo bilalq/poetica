@@ -1,4 +1,3 @@
-
 	<!-- Filter-->
 	<h3>Options:</h3>
 	<div class="row">
@@ -68,9 +67,8 @@
 	          	<dd><a href="#">Free Verse</a></dd>
 	          	<dd><a href="#">Blank Verse</a></dd>
 	          	<dd><a href="#">Haiku</a></dd>
-	         	<dd><a href="#">Ghazal</a></dd>
-	          	<dd><a href="#">Diamante</a></dd>
-	          	<dd><a href="#">Ballad</a></dd>
+	          	<dd><a href="#">Verse</a></dd>
+	          	<dd><a href="#">Misc</a></dd>
 	        </dl>
 	        
 	      </div>
@@ -87,18 +85,24 @@
 		      <?php foreach($poems as $poem): ?>
 
 			      <div class="row">
+			      	<div class="six columns">
+			      		<h4>Author: <?=$poem->user_id?></h4>
+			      	</div>
+			      	<div class="six columns">
+			      		<h4>Title: <?=$poem->title?></h4>
+			      	</div>
+			      </div>
+			      <div class="row">
 			      	<div class="three columns">
-			      		<h3><?=$poem->author?></h3>
-			      		<h3><?=$poem->title?></h3>
-			      		<p><strong><?=$poem->Votes?></strong></p>
+			      		<p><strong>Votes: <?=$poem->votes?></strong></p>
 			      	</div>
 			      	<div style="overflow:scroll" class="nine columns">
-			      		<p><?=$poem->content?></p>
+			      		<p><strong>Body:</strong><br>
+			      		 <?=$poem->content?></p>
 			      	</div>
 			      </div>
 			      <hr>
 			</div>
-
 			<div style="overflow:scroll" class="five columns">
 			      		<?php foreach($poem->comments as $comment): ?>
 			      		<div class="row">

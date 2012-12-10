@@ -56,9 +56,9 @@ class Poem_model extends CI_Model {
   	}
 
   	$query = $this->db->query(
-  		"SELECT * 
-  		FROM Poems p
-  		WHERE p.poem_id=?",
+  		"SELECT p.*, c.*, u.*
+  		FROM Poems p LEFT JOIN Comments c ON c.poem_id=p.poem_id LEFT JOIN Users u ON p.user_id = u.user_id
+  		WHERE p.poem_id=?"
   		array($poem_id)
   	);
 

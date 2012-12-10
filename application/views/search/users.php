@@ -22,18 +22,14 @@
 		</div>
 		<div class="two columns">
 			<form>
-				<label>Search By Year</label>
-				<input type="text" placeholder="AFTER Year"/>
+				<label>Search By Age</label>
+				<input type="text" placeholder="Age"/>
 			</form>
 		</div>
 		<div class="two columns">
-			<form class="custom">
-				<label for="customDropdown1">Search By Gender</label>
-				<select style="display:none;" id="customDropdown1">
-                  <option>Select</option>
-                  <option>Male</option>
-                  <option>Female</option>
-                </select>
+			<form>
+				<label>Search By Gender</label>
+				<input type="text" placeholder="Gender"/>
 			</form>
 		</div>
 		<div class="two columns">
@@ -46,8 +42,8 @@
 	<div class="row">
 		<div class="two columns">
 			<form class="custom">
-			<label for="customDropdown2">Select Popularity</label>
-                <select style="display:none;" id="customDropdown2">
+			<label for="customDropdown">Select Popularity</label>
+                <select style="display:none;" id="customDropdown">
                   <option>Select</option>
                   <option>Most Popular</option>
                   <option>Least Popular</option>
@@ -56,8 +52,8 @@
 		</div>
 		<div class="two columns">
 			<form>
-				<label>Find Followers</label>
-				<input type="checkbox"/>
+				<label>Find Fans</label>
+				<input type="text" placeholder="Enter Writer's Name"/>
 			</form>
 		</div>
 		<div class="two columns">
@@ -88,22 +84,22 @@
 	     	<?php foreach($people as $person): ?>
 
 	     	<div class="row">
-	     		<h3><?= $person->name; ?><h3>
+	     		<h3><?=person->name?><h3>
 	     		<div class="three columns">
-	     			<p>Gender: <?= $person->gender; ?><p>
+	     			<p>Gender: <?=person->gender?><p>
 	     		</div>
 	     		<div class="three columns">
-	     			<p>Birth date: <?= $person->birth; ?><p>
+	     			<p>Birth date: <?=person->birth?><p>
 	     		</div>
 	     		<div class="three columns">
-	     			<p>Email: <?= $person->email; ?><p>
+	     			<p>Email: <?=person->email?><p>
 	     		</div>
 	     		<div class="three columns">
-	     			<p>Adress: <?= $person->num_adress; ?>
-	     				<?= $person->street_adress; ?>
-	     				<?= $person->town_adress; ?>
-	     				<?= $person->state_adress; ?>
-	     				<?= $person->country_adress; ?>
+	     			<p>Adress: <?=person->num_adress?>
+	     				<?=person->street_adress?>
+	     				<?=person->town_adress?>
+	     				<?=person->state_adress?>
+	     				<?=person->country_adress?>
 	     			<p>
 	     		</div>
 	     	</div>

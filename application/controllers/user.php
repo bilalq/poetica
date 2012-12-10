@@ -20,25 +20,12 @@ class User extends MY_Controller {
 
   public function register() {
     if($this->input->post()) {
-      $this->load->model('User_model');
-
-      $user_data = $this->input->post();
-      $datestring = mdate("%Y-%m-%d", strtotime($user_data['birthday']));
-      $user_data['birthday'] = $datestring;
-
-      $registration_succeeded = $this->User_model->create($user_data);
-
-      if ($registration_succeeded) {
-        $user = $this->User_model->auth($user_data['email'], $user_data['password']);
-        $user = (array) $user;
-        $user['logged_in'] = TRUE;
-
-        $this->session->set_userdata($user);
-      }
-
-      redirect('/home');
+    // Registration query
+      var_dump($this->input->post());die;
+      $this->template->build('home/index');
     }
     else {
+    // Render registration page view
       $this->template->build('register');
     }
   }
@@ -57,7 +44,7 @@ class User extends MY_Controller {
 
       $this->session->set_userdata($user);
 
-      redirect('/home');
+      redirect('/home/');
     }
     else {
       $this->template->build('login');

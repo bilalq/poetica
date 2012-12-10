@@ -8,6 +8,12 @@
       </div>
     </div>
 
+    <div class="row">
+      <div class="twelve columns">
+        <h3 class="poem-category"><em>Type of Poem: Whole Verse</em></h3>
+      </div>
+    </div>
+
     <!-- AUTHOR -->
     <div class="row">
       <div class="twelve columns centered">
@@ -55,7 +61,11 @@ And Darkness was all that I could see.
         <div class="row comment-row">
           <div class="three columns offset-by-one">
             <?= gravatar('bilalquadri92@gmail.com', 45) ?>
-            <p class="commenter-name">Bilal Quadri:</p>
+            <p class="commenter-name">
+              Bilal Quadri:
+              <br><br>
+              <em class="comment-timestamp">10PM Jan 3, 2012</em>
+            </p>
           </div>
           <div class="seven columns end">
             <p class="comment-text">I love this poem. Word is bond, yo. Like, Cool Runnings means peace be the journey.</p>

@@ -11,4 +11,8 @@ class Poem extends MY_Controller {
     $this->template->build('poem', array('poem' => $poem));
   }
 
+  public function write() {
+    $this->template->build('compose');
+  }
+
 }

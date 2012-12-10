@@ -53,11 +53,24 @@ class User_model extends CI_Model {
     return (! empty($result)) ? $result[0] : null;
   }
   
-  public function get_profile($email) {
+  public function get_profile($id) {
 	$query = $this->db->query(
-	  "SELECT * FROM `Users` u
-	   WHERE u.email=?",
-	  array($email)
+	  "SELECT * 
+	   FROM `Users` u
+	   WHERE u.user_id=?",
+	  array($id)
+	);
+	
+	$result = $query->result();
+    return $result;
+  }
+  
+  public function get_following($id) {
+	$query = $this->db->query(
+	  "SELECT u.email, u.user_id, u.first_name, u.last_name
+	   FROM Followings f, Users u
+	   WHERE f.follower=? and u.user_id=f.followee;",
+	  array($id)
 	);
 	
 	$result = $query->result();
@@ -65,14 +78,40 @@ class User_model extends CI_Model {
   }
   
   public function get_follower($id) {
+	$query = $this->db->query(
+	  "SELECT u.email, u.user_id, u.first_name, u.last_name
+	   FROM Followings f, Users u
+	   WHERE f.followee=? and u.user_id=f.follower;",
+	  array($id)
+	);
 	
+	$result = $query->result();
+    return $result;
   }
   
-  public function get_following($id) {
-	  
+  public function get_poems($id) {
+	$query = $this->db->query(
+	  "SELECT *
+	   FROM Poems p
+	   WHERE p.user_id=?
+	   ORDER BY p.post_time;",
+	  array($id)
+	);
+	
+	$result = $query->result();
+    return $result;
   }
   
-  public function get_post($id) {
-	  
+  public function get_posts($id) {
+	$query = $this->db->query(
+	  "SELECT c.content AS post, p.title, p.content, u.first_name, u.last_name, c.post_time
+	   FROM Comments c, Poems p, Users u
+	   WHERE c.user_id=? AND c.poem_id=p.poem_id AND p.user_id=u.user_id
+	   ORDER BY c.post_time;",
+	  array($id)
+	);
+	
+	$result = $query->result();
+    return $result;
   }
 }

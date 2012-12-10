@@ -15,14 +15,78 @@
     </div>
 </div>
 <div class="row">
-	<div class="two columns end">
-    	<h5>Activities:</h5>
+	<div class="five columns">
+    	<h5>Recent Poems:</h5>
+    </div>
+    <div class="seven columns">
+    	<h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Recent Posts:</h5>
     </div>
 </div>
 <div class="row panel">
-	<div class="twelve columns">
-    	<pre>
-        <?php var_dump($profile); ?>
-        </pre>
+	<div class="six columns">
+    	<?php foreach ($poems as $poem): ?>
+    	<div class="row">
+        	<div class="one columns">
+			<b>Title: </b>
+			</div>
+			<div class="eleven columns">
+			&nbsp;<?= $poem->title; ?>
+            </div>
+        </div>
+        <div class="row">
+        	<div class="twelve columns">
+            <?= $poem->content; ?>
+            </div>
+        </div>
+        <div class="row">
+            <div class="one columns">
+            <b>Votes: </b>
+			</div>
+			<div class="three columns">
+			&nbsp;&nbsp;&nbsp;<?= $poem->votes; ?>
+            </div>
+            <div class="one columns">
+            <b>Date: </b>
+            </div>
+            <div class="seven columns">
+            <?= $poem->post_time; ?>
+            </div>
+        </div><br/><br/>
+		<?php endforeach; ?>
+    </div>
+    <div class="six columns">
+    	<?php foreach ($posts as $post): ?>
+    	<div class="row">
+        	<div class="one columns">
+			<b>Title: </b>
+			</div>
+			<div class="eleven columns">
+			&nbsp;<?= $post->title; ?>
+            </div>
+        </div>
+        <div class="row">
+            <div class="one columns">
+            <b>Arthur: </b>
+			</div>
+			<div class="eleven columns">
+			&nbsp;&nbsp;&nbsp;&nbsp;<?= $post->first_name; ?> <?= $post->last_name; ?>
+            </div>
+        </div>
+        <div class="row">
+        	<div class="twelve columns">
+            <?= $post->content; ?>
+            </div>
+        </div>
+        <div class="row">
+        	<div class="twelve columns">
+            	<b>Your comment:</b>
+            </div>
+        </div>
+        <div class="row">
+        	<div class="twelve columns">
+            <?= $post->post; ?>
+            </div>
+        </div><br/></br/>
+		<?php endforeach; ?>
     </div>
 </div>

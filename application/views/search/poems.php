@@ -86,19 +86,22 @@
 
 			      <div class="row">
 			      	<div class="six columns">
-			      		<h4>Author: <?=$poem->user_id?></h4>
+			      		<h4>Author: 
+			      			<?= $poem->first_name; ?>
+			      			<?= $poem->last_name; ?>
+			      		</h4>
 			      	</div>
 			      	<div class="six columns">
-			      		<h4>Title: <?=$poem->title?></h4>
+			      		<h4>Title: <?= $poem->title; ?></h4>
 			      	</div>
 			      </div>
 			      <div class="row">
 			      	<div class="three columns">
-			      		<p><strong>Votes: <?=$poem->votes?></strong></p>
+			      		<p><strong>Votes: <?= $poem->votes; ?></strong></p>
 			      	</div>
 			      	<div style="overflow:scroll" class="nine columns">
 			      		<p><strong>Body:</strong><br>
-			      		 <?=$poem->content?></p>
+			      		 <?= $poem->content; ?></p>
 			      	</div>
 			      </div>
 			      <hr>
@@ -107,11 +110,11 @@
 			      		<?php foreach($poem->comments as $comment): ?>
 			      		<div class="row">
 			      			<div class="four columns">
-			      				<h5><?=$comment->name?></h5>
-			      				<p><?=$comment->post_time?></p>
+			      				<h5><?= $comment->name; ?></h5>
+			      				<p><?= $comment->post_time; ?></p>
 			      			</div>
 			      			<div style="overflow:scroll" class="eight columns">
-			      				<p><?=$comment->content?></p>
+			      				<p><?= $comment->content; ?></p>
 			      			</div>
 			      		</div>
 			      		<hr>

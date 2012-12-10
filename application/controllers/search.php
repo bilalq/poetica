@@ -9,7 +9,8 @@ class Search extends MY_Controller {
   public function poems() {
 
     $this->load->model('Poem_model');
-    $poems = (array) ($this->Poem_model->get_poems('Alexio', 'Food', 'Most Popular', 'Newest', 'A-Z'));
+    $poems = (array) ($this->Poem_model->get_poems('Alexio', 'Food', 'p.votes', 'u.birth_date', 'u.first_name'));
+    $comments = (array) $this->Poem_model->get_comments();
     if(!empty($poems)){
       $this->template->build('search/poems', array("poems" => $poems));
     }

@@ -1,54 +1,60 @@
 	<!-- Filter-->
+	<form class="">
 	<h3>Options:</h3>
 	<div class="row">
 		<div class="two columns">
-			<form>
 				<label>Search By Author</label>
-				<input type="text" placeholder="Name"/>
-			</form>
+				<input type="text" placeholder="Name" name="Author"/>
 		</div>
 		<div class="two columns">
-			<form>
 				<label>Search By Title</label>
-				<input type="text" placeholder="Title"/>
-			</form>
+				<input type="text" placeholder="Title" name="Title"/>
 		</div>
 		<div class="two columns">
-			<form class="custom">
 			<label for="customDropdown">Select Popularity</label>
-                <select style="display:none;" id="customDropdown">
+                <select id="customDropdown" name="Popularity">
                   <option>Select</option>
                   <option>Most Popular</option>
                   <option>Least Popular</option>
                 </select>
-            </form>
 		</div>
 		<div class="two columns">
-			<form class="custom">
 			<label for="customDropdown">Select Age</label>
-                <select style="display:none;" id="customDropdown">
+                <select id="customDropdown" name="Age">
                   <option>Select</option>
                   <option>Most Recent</option>
                   <option>Oldest</option>
                 </select>
-            </form>
 		</div>
 		<div class="two columns">
-			<form class="custom">
 			<label for="customDropdown">Select ABC Order</label>
-                <select style="display:none;" id="customDropdown">
+                <select id="customDropdown" name="ABC">
                   <option>No Order</option>
                   <option>A-Z</option>
                   <option>Z-A</option>
                 </select>
-            </form>
 		</div>
 		<div class="row">
-		<div class="two columns">
-			<input type="submit" class="round button" value="Submit"/> 
-		</div>
-	</div>	
+			<div class="two columns">
+				<input type="submit" class="round button" value="Submit" name="Submit"/> 
+			</div>
+		</div>	
 	</div>
+</form>
+	<?php 
+/*
+		if(isset($_GET['Submit']))
+		{
+			$author = $_GET['Author'];
+			$title = $_GET['Title'];
+			$popularity = $_GET['Popularity'];
+			$age = $_GET['Age'];
+			$abc = $_GET['ABC'];
+
+
+		}
+		*/
+	?>
 
 
 	<hr>
@@ -79,12 +85,11 @@
 	    <div class="nine columns">
 	      
 	      <!-- Feed Entry -->
-	      <div style="overflow:scroll" class="row">
+	      <div style="overflow:scroll overflow-x:hidden" class="row">
 
+	      	<?php foreach($poems as $poem): ?>
 	      	<div class="seven columns">
-		      <?php foreach($poems as $poem): ?>
-
-			      <div class="row">
+		          <div class="row">
 			      	<div class="six columns">
 			      		<h4>Author: 
 			      			<?= $poem->first_name; ?>
@@ -99,14 +104,14 @@
 			      	<div class="three columns">
 			      		<p><strong>Votes: <?= $poem->votes; ?></strong></p>
 			      	</div>
-			      	<div style="overflow:scroll" class="nine columns">
+			      	<div style="overflow:scroll overflow-x:hidden" class="nine columns">
 			      		<p><strong>Body:</strong><br>
 			      		 <?= $poem->content; ?></p>
 			      	</div>
 			      </div>
 			      <hr>
 			</div>
-			<div style="overflow:scroll" class="five columns">
+			<div style="overflow:scroll overflow-x:hidden" class="five columns">
 			      		<?php foreach($poem->comments as $comment): ?>
 			      		<div class="row">
 			      			<div class="four columns">

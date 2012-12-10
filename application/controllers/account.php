@@ -6,7 +6,7 @@ class Account extends MY_Controller {
     $logged_in = $this->session->userdata('logged_in');
 
     if ($logged_in) {
-      $this->template->build('home/index');
+      redirect('/home');
     }
     else {
       $this->template->build('login');
@@ -17,7 +17,7 @@ class Account extends MY_Controller {
     $logged_in = $this->session->userdata('logged_in');
 
     if ($logged_in) {
-      $this->template->build('home/index');
+      redirect('/home');
     }
     else {
       $this->template->append_metadata('<link rel="stylesheet" href="/public/stylesheets/pikaday.css">');

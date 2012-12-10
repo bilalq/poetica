@@ -2,19 +2,24 @@
 
 class Search extends MY_Controller {
 
-  function __construct() {
-    parent::__construct();
-  }
-
   public function index() {
-    $this->template->build('search/poems');
+    $this->poems();
   }
 
   public function poems() {
-    $this->template->build('search/poems');
+
+    $this->load->model('Poem_model');
+    $poems = (array) ($this->Poem_model->get_poem('1'));
+    if(!empty($poems)){
+      $this->template->build('search/poems', array("poems" => $poems));
+    }
+    else {
+      echo "NO POEMS, SON";
+    }
   }
 
   public function users() {
+    $this->load->model("User_model");
     $this->template->build('search/users');
   }
 

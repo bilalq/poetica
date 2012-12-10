@@ -34,17 +34,25 @@ class Poem_model extends CI_Model {
 
   function get_poems($authors, $titles, $popularity, $age, $abc){
 
-    $authors = isset($authors) ? $authors : '%';
-    $titles = isset($titles) ? $titles : '%';
-    $age = isset($age) ? $age : '%';
-    $abc = isset($abc) ? $abc : '%';
+   /* $authors = !isset($authors) ? $authors : '%';
+    $titles = !isset($titles) ? $titles : '%';
+    $age = !isset($age) ? $age : '%';
+    $abc = !isset($abc) ? $abc : '%';*/
 
-    $query = "SELECT u.first_name, u.last_name, p.title, p.votes, p.content, p.post_date
+    $query = "SELECT u.first_name, u.last_name, p.title, p.votes, p.content, p.post_time
       FROM Users u, Poems p
-      WHERE u.first_name LIKE '%?%' AND u.user_id=p.user_id AND p.title LIKE'%?%'";
+      WHERE u.first_name LIKE ? AND u.user_id=p.user_id AND p.title LIKE ?";
 
-    $query .="Order by p.votes, p.post_date";
+    $query .='Order by p.votes, p.post_time';
 
+    $search = $this->db->query("SELECT u.first_name,
+     u.last_name, p.title, p.votes, p.content, p.post_time, p.poem_id
+      FROM Users u, Poems p
+      WHERE u.first_name LIKE ? AND u.user_id=p.user_id AND p.title LIKE ?",
+       array($authors, $titles));
+
+    echo $query;
+    return $search->result();
   }
 
   function get_poem($poem_id){

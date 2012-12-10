@@ -47,6 +47,7 @@ $route['login'] = 'account/login';
 $route['register'] = 'account/register';
 $route['logout'] = 'account/logout';
 $route['profile/(:num)'] = 'profile/get_user_profile/$1';
+$route['poem/(:num)'] = 'poem/index/$1';
 
 
 /* End of file routes.php */

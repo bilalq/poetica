@@ -33,6 +33,14 @@ pre.poem {
   overflow-x: scroll;
 }
 
+pre.poem-full {
+  /*font-family: "Helvetica Neue", Arial, sans-serif;*/
+  font-family: "Garamond", Arial, sans-serif;
+  font-size: 18px;
+l font-weight: 400;
+  padding-bottom: 30px;
+}
+
 p.author {
   font-weight: 200;
   font-style: italic;
@@ -41,6 +49,10 @@ p.author {
 h3 {
   font-weight: 300;
   color: #666;
+}
+
+h3.full-title {
+  font-size: 40px;
 }
 
 .panel {
@@ -99,4 +111,29 @@ li.name a:hover {
 
 .fill-width {
   width: 100%;
+}
+
+.full-comments {
+  /*background-color: rgba(255,255,255, 0.8);*/
+  /*border-radius: 2px;*/
+}
+
+.commenter-name {
+  display: inline;
+  position: relative;
+  top: -20px;
+}
+
+.full-comments h5 {
+  font-weight: 200;
+}
+
+.comment-row {
+  padding-top: 15px;
+  padding-bottom: 5px;
+  border-top: 1px solid #ccc;
+}
+
+.comments-box {
+  /*background-color: rgba(255,255,255,0.5);*/
 }

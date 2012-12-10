@@ -21,7 +21,6 @@
   <link rel="stylesheet" href="/public/stylesheets/foundation.min.css">
   <link rel="stylesheet" href="/public/stylesheets/app.css">
 
-  <?= $template['metadata']; ?>
 
 
   <script src="/public/javascripts/modernizr.foundation.js"></script>
@@ -91,6 +90,7 @@
 
   <!-- Initialize JS Plugins -->
   <script src="/public/javascripts/app.js"></script>
+  <?= $template['metadata']; ?>
 
 </body>
 </html>

@@ -3,7 +3,7 @@
 class Search extends MY_Controller {
 
   public function index() {
-    $this->poems();
+    redirect('/search/poems');
   }
 
   public function poems() {

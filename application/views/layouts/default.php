@@ -53,7 +53,9 @@
           <!-- RIGHT NAV SECTION -->
           <section>
             <ul class="right">
+
               <?php if($this->session->userdata('logged_in')): ?>
+
                 <li class="divider"></li>
                 <li class="has-dropdown">
                 <a id="menu-bar"><?=gravatar($this->session->userdata('email'), 35);?> 
@@ -69,11 +71,16 @@
                   </ul>
                 </li>
                 <li class="divider hide-for-small"></li>
+
               <?php else: ?>
+                <li class="divider"></li>
+                <li><a href="/register">Register</a></li>
                 <li class="divider"></li>
                 <li><a href="/login">Login</a></li>
                 <li class="divider hide-for-small"></li>
+
               <?php endif; ?>
+
             </ul>
           </section>
 

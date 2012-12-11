@@ -13,15 +13,43 @@ class Search extends MY_Controller {
     $comments = (array) $this->Poem_model->get_comments();
     if(!empty($poems)){
       $this->template->build('search/poems', array("poems" => $poems));
-    }
-    else {
+    } else {
       echo "NO POEMS, SON";
     }
   }
 
   public function users() {
-    $this->load->model("User_model");
-    $this->template->build('search/users');
+    
+	if ($this->input->post()) {
+		$this->load->model("User_model");
+		$params = $this->input->post();
+		$people = $this->User_model->get_people(
+			$params['name'],
+			$params['edu'],
+			$params['work'],
+			$params['age'],
+			$params['gender'],
+			$params['country'],
+			$params['popularity'],
+			$params['writing']
+		);
+		// checks if find followers is toggled
+		if (!empty($params['followers']) && !empty($params['name'])) {
+			$followers = $this->User_model->get_followers($params['name']);
+		} else {
+			$followers = array();
+		}
+		// if results are not empty
+		if(!empty($people)){
+		  $this->template->build('search/users', array("people" => $people, "followers" => $followers));
+		} else {
+		  echo "NO PEOPLE ONLINE! GO BACK TO SLEEP SON!";
+		}
+	} else {
+		$this->template->build('search/users');
+	}
+	
+	
   }
 
 }

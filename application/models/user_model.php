@@ -67,6 +67,56 @@ class User_model extends CI_Model {
     $result = $query->result();
     return $result;
   }
+  
+  public function help_parse($objects, $option) {
+	  if( !empty($objects) ):
+	  		echo '<div class="row">';
+	      if ($option == 1) { echo '<h4>People:</h4>'; } 
+		  else { echo '<h4>Followers:</h4>'; }
+		    echo '</div>';
+			
+		  foreach($objects as $object):
+	      	echo '<div class="row">';
+			echo '<div class="columns">';
+			echo gravatar($object->email, 45);
+			echo '</div>';
+			echo '<div class="columns end">';
+	     	echo '<h3>'.$object->first_name.' '.$object->last_name.'</h3>';
+			echo '</div>';
+			echo '</div>';
+			echo '<div class="row">';
+	     	echo '<div class="two columns">';
+	     	echo '<p><i>Gender:</i><br/>';
+			if ($object->gender == 1) {
+				echo "Male";
+			} else {
+				echo "Female";
+			}
+            echo '</p>';
+	     	echo '</div>';
+	     	echo '<div class="two columns">';
+	     	echo '<p><i>Birth date:</i><br/>';
+			echo $object->birth_date;
+            echo '</p>';
+	     	echo '</div>';
+	     	echo '<div class="three columns">';
+	     	echo '<p><i>Email:</i><br/>';
+			echo $object->email;
+            echo '</p>';
+	     	echo '</div>';
+	     	echo '<div class="five columns">';
+	     	echo '<p><i>Adress:</i><br/>';
+			echo $object->num_address;
+	     	echo $object->street_address;
+	     	echo $object->town_address;
+	     	echo $object->state_address;
+	     	echo $object->country_address;
+	     	echo '</p>';
+	     	echo '</div>';
+	     	echo '</div>';
+	     	endforeach;
+	  endif;
+  }
 
 
   public function get_following($id) {
@@ -122,21 +172,32 @@ class User_model extends CI_Model {
     return $result;
   }
   
+  public function get_followers($pname) {
+	  
+	  $query = $this->db->query("
+	  		SELECT u2.*
+			FROM Users u JOIN Followings f ON u.user_id=f.follower JOIN Users u2 ON f.followee=u2.user_id
+			WHERE u.first_name LIKE ?;",
+			array($pname)
+	  );
+	  
+	  $result = $query->result();
+      return $result;
+  }
 
-  public function get_people($pname, $edu, $work, $age, $gender, $country, $popular, $fans, $writing) {
+  public function get_people($pname, $edu, $work, $age, $gender, $country, $popular, $writing) {
 	  
-	  $pname	= empty($pname)		? "'%'" : $pname;
-	  $edu		= empty($edu)		? "'%'" : $edu;
-	  $work		= empty($work)		? "'%'" : $work;
-	  $age		= empty($age)		? "'%'" : $age;
-	  $gender	= empty($gender)	? "'%'" : $gender;
-	  $country	= empty($country)	? "'%'" : $country;
-	  $popular	= empty($popular)	? "'%'" : $popular;
-	  $fans		= empty($fans)		? "'%'" : $fans;
-	  $writing	= empty($writing)	? "'%'" : $writing;
-	  
-	$query = $this->db->query(
-	   "SELECT DISTINCT u.user_id, u.first_name, u.last_name, u.gender, u.birth_date, p.poems, p.votes, f.followers, c.comments
+	  $pname	= empty($pname)		? "%" : $pname;
+	  $edu		= empty($edu)		? "%" : $edu;
+	  $work		= empty($work)		? "%" : $work;
+	  $age		= empty($age)		? "%" : $age;
+	  $gender	= empty($gender)	? "%" : $gender;
+	  $country	= empty($country)	? "%" : $country;
+	  $popular	= empty($popular)	? "%" : $popular;
+	  $writing	= empty($writing)	? "%" : $writing;
+	 
+	$query = $this->db->query("
+	    SELECT DISTINCT u.*, p.poems AS poems, p.votes AS votes, f.followers AS followers, c.comments  AS comments
 		FROM Users u
 			LEFT JOIN 
 			(SELECT p.user_id, COUNT(p.user_id) AS poems, MAX(p.votes) AS votes FROM Poems p GROUP BY p.user_id) AS p ON u.user_id=p.user_id
@@ -146,10 +207,12 @@ class User_model extends CI_Model {
 			(SELECT c.user_id, COUNT(c.user_id) AS comments FROM Comments c GROUP BY c.user_id) AS c ON u.user_id=c.user_id,
 			Employment w, Education e
 		WHERE u.user_id=w.user_id AND u.user_id=e.user_id
-		AND u.first_name like ? AND e.school like ? AND w.employer like ? AND u.birth_date > ? AND u.gender like ? AND u.country_address like ?
+		AND u.first_name like ? AND e.school like ? AND w.employer like ? AND u.birth_date > ? AND u.gender LIKE ? AND u.country_address like ?
 		ORDER BY ?, ?;",
 		array($pname, $edu, $work, $age, $gender, $country, $popular, $writing)
 	);
+	
+	$result = $query->result();
+    return $result;
   }
-
 }

@@ -41,7 +41,7 @@ l font-weight: 400;
   padding-bottom: 30px;
 }
 
-p.author {
+.author {
   font-weight: 200;
   font-style: italic;
 }
@@ -162,3 +162,9 @@ textarea#content {
   padding-bottom: 20px;
 }
 
+.credit-block {
+  padding-top: 10px;
+  margin-left: 0;
+  padding-left: 0;
+  padding-right: 0;
+}

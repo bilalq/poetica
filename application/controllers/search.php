@@ -8,25 +8,44 @@ class Search extends MY_Controller {
 
   public function poems() {
 
-    $this->load->model('Poem_model');
+    if($this->input->get()){
+      echo 'Yep';
+      $this->load->model('Poem_model');
+      $args = $this->input->get();
+      echo 'This ';
+      if(!empty($args['Author']) || !empty($args['Title'])){
+        echo $args['Author'];
 
-    $poems = ($this->Poem_model->get_poems('Alexio', 'Food', 'p.votes', 'u.birth_date', 'u.first_name'));
-    for ($i=0; $i < count($poems); $i++) { 
-      $comments = $this->Poem_model->search_get_comments($poems[$i]->poem_id);
-      for ($j=0; $j < count($comments); $j++) { 
-        $comments[$j] = (array) $comments[$j];
-      }
+        $poems = $this->Poem_model->get_poems(
+          $args['Author'], 
+          $args['Title'], 
+          'p.votes',
+          'u.birth_date', 
+          'u.first_name'
+          );
+        for ($i=0; $i < count($poems); $i++) { 
+          $comments = $this->Poem_model->search_get_comments($poems[$i]->poem_id);
+          for ($j=0; $j < count($comments); $j++) { 
+            $comments[$j] = (array) $comments[$j];
+          }
 
-      if(!empty($comments)) {
-        $poems[$i]->comments = $comments;
-      }
-      else{
-        $poems[$i]->comments = array();
+          if(!empty($comments)) {
+            $poems[$i]->comments = $comments;
+          }
+          else{
+            $poems[$i]->comments = array();
+          }
+        }
+
+        if(!empty($poems)){
+          $this->template->build('search/poems', array("poems" => $poems));
+        }
       }
     }
-
-    $this->template->build('search/poems', array("poems" => $poems));
-
+    else{
+      echo "Nope";
+      $this->template->build('search/poems', array("poems" => array()));
+    }
   }
 
   public function users() {
@@ -43,7 +62,7 @@ class Search extends MY_Controller {
         $params['country'],
         $params['popularity'],
         $params['writing']
-      );
+        );
       if (!empty($params['followers']) && !empty($params['name'])) {
         $followers = $this->User_model->get_followers($params['name']);
       } 

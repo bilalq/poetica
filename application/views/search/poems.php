@@ -1,5 +1,5 @@
 	<!-- Filter-->
-	<form class="">
+<form action="/search/poems" method="GET">
 	<h3>Options:</h3>
 	<div class="row">
 		<div class="two columns">
@@ -42,18 +42,15 @@
 	</div>
 </form>
 	<?php 
-/*
-		if(isset($_GET['Submit']))
+		/*if(isset($_GET['Submit']))
 		{
 			$author = $_GET['Author'];
 			$title = $_GET['Title'];
 			$popularity = $_GET['Popularity'];
 			$age = $_GET['Age'];
 			$abc = $_GET['ABC'];
-
-
-		}
-		*/
+			$array = array($author, $title, $popularity, $age, $abc, $array);
+		}*/
 	?>
 
 

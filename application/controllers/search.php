@@ -75,11 +75,11 @@ class Search extends MY_Controller {
       else {
         $followers = array();
       }
-      if(!empty($people)){
+      if(!empty($people) || !empty($followers)){
         $this->template->build('search/users', array("people" => $people, "followers" => $followers));
       } 
       else {
-        echo "NO PEOPLE ONLINE! GO BACK TO SLEEP SON!";
+        $this->template->build('search/users');
       }
     }
     else {

@@ -73,7 +73,7 @@
 		  	if (!empty($people)) {
 			  $this->User_model->help_parse($people, 1);
 			}
-			if (!empty($people)) {
+			if (!empty($followers)) {
           	  $this->User_model->help_parse($followers, 2); 
 			}
 		  ?>

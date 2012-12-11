@@ -112,10 +112,10 @@ class User_model extends CI_Model {
 	     	echo '</div>';
 	     	echo '<div class="five columns">';
 	     	echo '<p><i>Adress:</i><br/>';
-			echo $object->num_address;
-	     	echo $object->street_address;
-	     	echo $object->town_address;
-	     	echo $object->state_address;
+			echo $object->num_address." ";
+	     	echo $object->street_address."<br/>";
+	     	echo $object->town_address.", ";
+	     	echo $object->state_address." ";
 	     	echo $object->country_address;
 	     	echo '</p>';
 	     	echo '</div>';

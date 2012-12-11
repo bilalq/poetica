@@ -1,7 +1,7 @@
 Poetica
 ======
 
-A social network for poets
+_A social network for poets_
 
 This application was built using MySQL and CodeIgniter, an MVC
 (Model-View-Controller) framework for PHP.

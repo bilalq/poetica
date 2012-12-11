@@ -24,6 +24,7 @@ class Search extends MY_Controller {
         $args['Popularity'],
         $args['Age'], 
         $args['ABC']
+        $args['Category']
         );
       echo "Middle";
       for ($i=0; $i < count($poems); $i++) { 

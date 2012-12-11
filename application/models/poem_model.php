@@ -28,11 +28,12 @@ class Poem_model extends CI_Model {
   }
 
 
-  public function get_poems($authors, $titles, $popularity, $age, $abc){
+  public function get_poems($authors, $titles, $popularity, $age, $abc, $category){
 
     echo 'Titles '.$titles;
     $authors = !empty($authors) ? $authors : "%";
     $titles = !empty($titles) ? $titles : "%";
+    $category = !empty($category) ? $category : "%";
 
     echo '<br>';
     echo 'Values'; 
@@ -46,9 +47,9 @@ class Poem_model extends CI_Model {
       $search = $this->db->query("
         SELECT u.first_name, u.last_name, u.email, p.poem_id, p.title, p.votes, p.content, p.post_time
         FROM Users u, Poems p
-        WHERE u.first_name LIKE ? AND u.user_id=p.user_id AND p.title LIKE ?
+        WHERE p.category=? AND u.first_name LIKE ? AND u.user_id=p.user_id AND p.title LIKE ?
         ORDER BY ? DESC",
-        array($authors, $titles, "p.votes")
+        array($category, $authors, $titles, "p.votes")
       );
     }
     else if(!empty($age)){
@@ -56,9 +57,9 @@ class Poem_model extends CI_Model {
       $search = $this->db->query("
         SELECT u.first_name, u.last_name, u.email, p.poem_id, p.title, p.votes, p.content, p.post_time
         FROM Users u, Poems p
-        WHERE u.first_name LIKE ? AND u.user_id=p.user_id AND p.title LIKE ?
+        WHERE p.category=? AND u.first_name LIKE ? AND u.user_id=p.user_id AND p.title LIKE ?
         ORDER BY ?",
-        array($authors, $titles, 'u.birth_date')
+        array($category, $authors, $titles, 'u.birth_date')
       );
     }
     else if(!empty($abc)){
@@ -66,9 +67,9 @@ class Poem_model extends CI_Model {
       $search = $this->db->query("
         SELECT u.first_name, u.last_name, u.email, p.poem_id, p.title, p.votes, p.content, p.post_time
         FROM Users u, Poems p
-        WHERE u.first_name LIKE ? AND u.user_id=p.user_id AND p.title LIKE ?
+        WHERE p.category=? AND u.first_name LIKE ? AND u.user_id=p.user_id AND p.title LIKE ?
         ORDER BY ?",
-        array($authors, $titles, 'u.first_name')
+        array($category, $authors, $titles, 'u.first_name')
       );
     }
 

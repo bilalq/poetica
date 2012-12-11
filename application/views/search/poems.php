@@ -40,13 +40,24 @@
 			</div>
 		</div>	
 	</div>
+	<div class="row">
+		<label for="customDropdown">Select Category</label>
+                <select id="customDropdown" name="Category">
+                  <option value="">All</option>
+                  <option value="Free Verse">Free verse</option>
+                  <option value="Blank Verse">Blank Verse</option>
+                  <option value="Haiku">Haiku</option>
+                  <option value="Verse">Verse</option>
+                  <option value="Misc">Misc</option>
+                </select>
+	</div>
 
 	  <div class="three columns">
 	      <div class="panel">
 	        <img src="/public/images/bookandpen.jpg" />
 	        <h5><a href="#">Poem Categories</a></h5>
 	        
-	        <dl class="vertical tabs" name='Category'>
+	        <dl class="vertical tabs">
 	        	<dd><a value='All'>All</a></dd>
 	          	<dd><a value="Free Verse">Free Verse</a></dd>
 	          	<dd><a value="Blank Verse">Blank Verse</a></dd>

@@ -4,13 +4,13 @@
     <!-- TITLE -->
     <div class="row">
       <div class="twelve columns">
-        <h3 class="full-title">The Realm of Suffering</h3>
+      <h3 class="full-title"><?=$poem['title']?></h3>
       </div>
     </div>
 
     <div class="row">
       <div class="twelve columns">
-        <h3 class="poem-category"><em>Type of Poem: Whole Verse</em></h3>
+      <h3 class="poem-category"><em>Type of Poem: <?=$poem['category']?></em></h3>
       </div>
     </div>
 
@@ -18,8 +18,8 @@
     <div class="row">
       <div class="twelve columns centered">
         <p class="author">
-          <?= gravatar('bilalquadri92@gmail.com', 45) ?>
-          by Bilal Quadri
+          <?= gravatar($poem['email'], 45) ?>
+          by <?=$poem['first_name']?> <?=$poem['last_name']?>
         </p>
       </div>
     </div>
@@ -29,25 +29,7 @@
     <div class="row">
       <div class="six columns end">
 <pre class="poem-full">
-After trudging through thick mist and marsh,
-I found myself lost in Grief,
-And discovered a world, cruel and harsh,
-Where Agony reigned chief.
-
-Alone at first, I was therein,
-Until Rage came and stood by my side.
-He gave me strength to his akin,
-And was there for me, when I cried.
-
-As my tears began to fall,
-They gathered around me a sea of Despair.
-I drowned in regrets, large and small,
-And not a soul in the world seemed to care.
-
-In these struggles, I was never again alone,
-For Misery always kept me company.
-I gazed at Sorrow upon his throne,
-And Darkness was all that I could see.
+<?=$poem['content']?>
 </pre>
       </div>
     </div>

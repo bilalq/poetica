@@ -59,11 +59,12 @@
                 <li class="divider"></li>
                 <li class="has-dropdown">
                 <a id="menu-bar"><?=gravatar($this->session->userdata('email'), 35);?> 
-                  <?= $this->session->userdata('first_name'); ?> <?= $this->session->userdata('last_name'); ?>
+                  <span id="user-name"><?= $this->session->userdata('first_name'); ?> <?= $this->session->userdata('last_name'); ?></span>
                 </a>
                   <ul class="dropdown">
                     <li><label style="cursor: default;">Go to</label></li>
                     <li><a href="/profile">Profile</a></li>
+                    <li><a href="/poem/write">Compose Poem</a></li>
                     <li><a href="/search/poems">Search Poems</a></li>
                     <li><a href="/search/users">Search Users</a></li>
                     <li class="divider"></li>

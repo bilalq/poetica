@@ -16,8 +16,13 @@ $(document).ready(function() {
               alert('Failed to insert comment');
             }
             else {
-              alert('Writing comment succeeded');
               console.log(response);
+              var comm = '<div class="row comment-row"><div class="three columns offset-by-one"><img style="height:45px; width: 45px;" src="' + $('#menu-bar img').attr('src') + '"><p class="commenter-name">'+ $('#user-name').text() + '<br><br><em class="comment-timestamp">'+response+'</em></p></div><div class="seven columns end"><p class="comment-text">'+comment_text+'</p></div></div>';
+
+              $('.displayed-comments').append(comm);
+              $(this).val('');
+              $("html, body").animate({ scrollTop: $(document).height()-$(window).height() });
+
             }
           }
         });

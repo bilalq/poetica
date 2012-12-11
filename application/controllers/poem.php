@@ -27,11 +27,19 @@ class Poem extends MY_Controller {
 
   public function comment() {
     $comment = $this->input->post();
+
     if (empty($comment)) {
       echo '';
     }
     else {
-      var_dump($comment);
+      $this->load->model('Poem_model');
+      $success = $this->Poem_model->insert_comment(
+        intval($comment['poem_id']),
+        intval($comment['user_id']),
+        $comment['content']
+      );
+
+      echo $success;
     }
   }
 

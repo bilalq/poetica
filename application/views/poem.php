@@ -42,27 +42,28 @@
   <!-- COMMENTS -->
   <div class="row full-comments">
     <div class="twelve columns comments-box">
-      <h5>Comments:</h5>
-      <?php foreach ($comments as $comment): ?>
-        <div class="row comment-row">
-          <div class="three columns offset-by-one">
-            <?= gravatar($comment['email'], 45) ?>
-            <p class="commenter-name">
-              <?=$comment['first_name']?> <?=$comment['last_name']?>:
-              <br><br>
-              <em class="comment-timestamp"><?=$comment['post_time']?></em>
-            </p>
+      <div class="displayed-comments">
+        <h5>Comments:</h5>
+        <?php foreach ($comments as $comment): ?>
+          <div class="row comment-row">
+            <div class="three columns offset-by-one">
+              <?= gravatar($comment['email'], 45) ?>
+              <p class="commenter-name">
+                <?=$comment['first_name']?> <?=$comment['last_name']?>:
+                <br><br>
+                <em class="comment-timestamp"><?=$comment['post_time']?></em>
+              </p>
+            </div>
+            <div class="seven columns end">
+            <p class="comment-text"><?=$comment['content']?></p>
+            </div>
           </div>
-          <div class="seven columns end">
-          <p class="comment-text"><?=$comment['content']?></p>
-          </div>
-        </div>
-      <?php endforeach; ?>
+        <?php endforeach; ?>
+      </div>
       <form id="comment_submit">
         <textarea id="new_comment" name="content" type="text" placeholder="Comment on this poem"></textarea>
         <input style="display: none;" name="poem_id" value="<?=$poem['poem_id']?>">
         <input style="display: none;" name="user_id" value="<?=$this->session->userdata('user_id')?>">
-        <input style="display: none;" name="post_time" value="<?=now()?>">
       </form>
     </div>
   </div>

@@ -69,17 +69,16 @@ class Poem_model extends CI_Model {
       return null;
     }
 
-    $date = date('m/d/Y h:i:s', time());
+    $date = mdate('%Y-%m-%d %h:%i:%s', time());
 
     $insert = $this->db->query("
-      INSERT INTO 'Comments' ('poem_id', 'user_id', 'post_time',
-      'content')
+      INSERT INTO `Comments` (`poem_id`, `user_id`, `content`, `post_time`)
       VALUES
       (?,?,?,?)",
       array($poem_id, $user_id, $content, $date)
     );
 
-    return $insert;
+    return ($insert ? $date : '');
   }
 
 
@@ -91,7 +90,8 @@ class Poem_model extends CI_Model {
     $query = $this->db->query("
       SELECT c.user_id, c.post_time, c.content, u.email, u.first_name, u.last_name
       FROM Comments c, Users u
-      WHERE c.poem_id=? AND c.user_id=u.user_id",
+      WHERE c.poem_id=? AND c.user_id=u.user_id
+      ORDER BY c.post_time",
       array($poem_id)
     );
 

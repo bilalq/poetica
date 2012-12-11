@@ -199,8 +199,8 @@ class User_model extends CI_Model {
 	  $age		= empty($age)		? "%" : $age;
 	  $gender	= empty($gender)	? "%" : $gender;
 	  $country	= empty($country)	? "%" : $country;
-	  $popular	= empty($popular)	? "%" : $popular;
-	  $writing	= empty($writing)	? "%" : $writing;
+	  $popular	= empty($popular)	? "'%'" : $popular;
+	  $writing	= empty($writing)	? "'%'" : $writing;
 	 
 	$query = $this->db->query("
 	    SELECT DISTINCT u.*, p.poems AS poems, p.votes AS votes, f.followers AS followers, c.comments  AS comments
@@ -214,8 +214,8 @@ class User_model extends CI_Model {
 			Employment w, Education e
 		WHERE u.user_id=w.user_id AND u.user_id=e.user_id
 		AND u.first_name like ? AND e.school like ? AND w.employer like ? AND u.birth_date > ? AND u.gender LIKE ? AND u.country_address like ?
-		ORDER BY ?, ?;",
-		array($pname, $edu, $work, $age, $gender, $country, $popular, $writing)
+		ORDER BY ".$popular." DESC, ".$writing." DESC;",
+		array($pname, $edu, $work, $age, $gender, $country)
 	);
 	
 	$result = $query->result();

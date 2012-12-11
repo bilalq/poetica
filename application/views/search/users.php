@@ -24,8 +24,8 @@
                 </select>
 		</div>
 		<div class="two columns">
-				<label>Search By Age</label>
-				<input type="text" name="age" placeholder="Gender"/>
+				<label>Search Before Age</label>
+				<input type="text" name="age" placeholder="ex: yyyy-mm-dd"/>
 		</div>
 		<div class="two columns">
 				<label>Search By Country</label>
@@ -37,7 +37,7 @@
 				<label for="customDropdown2">Select Popularity</label>
                 <select id="customDropdown2" name="popularity">
                   <option value="">Select</option>
-                  <option value="votes">yes</option>
+                  <option value="followers">yes</option>
                   <option value="">no</option>
                 </select>
 		</div>
@@ -69,9 +69,13 @@
 	    <div style="overflow:scroll" class="twelve columns">
 	      
 	      <!-- Feed Entry -->
-          <?php 
+          <?php
+		  	if (!empty($people)) {
 			  $this->User_model->help_parse($people, 1);
+			}
+			if (!empty($people)) {
           	  $this->User_model->help_parse($followers, 2); 
+			}
 	     	  echo '<hr>';
 		  ?>
 		  <!-- End Feed Entry -->    

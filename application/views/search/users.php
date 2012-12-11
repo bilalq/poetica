@@ -3,71 +3,59 @@
 	<h3>Options:</h3>
 	<div class="row">
 		<div class="two columns">
-			<form>
+			<form action="/search/users" method="post">
 				<label>Search By Name</label>
-				<input type="text" placeholder="Name"/>
-			</form>
+				<input type="text" name="name" placeholder="Name"/>
 		</div>
 		<div class="two columns">
-			<form>
 				<label>Search By Edu</label>
-				<input type="text" placeholder="School">
-			</form>
+				<input type="text" name="edu" placeholder="School"/>
 		</div>
 		<div class="two columns">
-			<form>
 				<label>Search By Work</label>
-				<input type="text" placeholder="Company"/>
-			</form>
+				<input type="text" name="work" placeholder="Company"/>
 		</div>
 		<div class="two columns">
-			<form>
+				<label for="customDropdown1">Search By Gender</label>
+				<select id="customDropdown1" name="gender">
+                  <option value="">Select</option>
+                  <option value="1">Male</option>
+                  <option value="2">Female</option>
+                </select>
+		</div>
+		<div class="two columns">
 				<label>Search By Age</label>
-				<input type="text" placeholder="Age"/>
-			</form>
+				<input type="text" name="age" placeholder="Gender"/>
 		</div>
 		<div class="two columns">
-			<form>
-				<label>Search By Gender</label>
-				<input type="text" placeholder="Gender"/>
-			</form>
-		</div>
-		<div class="two columns">
-			<form>
 				<label>Search By Country</label>
-				<input type="text" placeholder="Country"/>
-			</form>
+				<input type="text" name="country" placeholder="Country"/>
 		</div>
 	</div>
 	<div class="row">
 		<div class="two columns">
-			<form class="custom">
-			<label for="customDropdown">Select Popularity</label>
-                <select style="display:none;" id="customDropdown">
-                  <option>Select</option>
-                  <option>Most Popular</option>
-                  <option>Least Popular</option>
+				<label for="customDropdown2">Select Popularity</label>
+                <select id="customDropdown2" name="popularity">
+                  <option value="">Select</option>
+                  <option value="votes">yes</option>
+                  <option value="">no</option>
                 </select>
-            </form>
 		</div>
 		<div class="two columns">
-			<form>
-				<label>Find Fans</label>
-				<input type="text" placeholder="Enter Writer's Name"/>
-			</form>
+				<label>List Followers</label>
+				<input type="checkbox" name="followers"/>
 		</div>
 		<div class="two columns">
-			<form class="custom">
 				<label for="customDropdown">Writing</label>
-                <select style="display:none;" id="customDropdown">
-                  <option>Select</option>
-                  <option>Most Poems</option>
-                  <option>Most Comments</option>
+                <select id="customDropdown" name="writing">
+                  <option value="">Select</option>
+                  <option value="poems">Most Poems</option>
+                  <option value="comments">Most Comments</option>
                 </select>
-			</form>
 		</div>
 		<div class="two columns">
-			<input type="submit" class="round button" value="Submit"/> 
+			<input type="submit" class="round button" value="Submit"/>
+            </form> 
 		</div>
 	</div>	
 	<!-- End of Filter -->
@@ -78,33 +66,14 @@
 	
 	    
 	    <!-- Main Feed -->
-	    <div style="overflow:scroll" class="nine columns">
+	    <div style="overflow:scroll" class="twelve columns">
 	      
 	      <!-- Feed Entry -->
-	     	<?php foreach($people as $person): ?>
-
-	     	<div class="row">
-	     		<h3><?=person->name?><h3>
-	     		<div class="three columns">
-	     			<p>Gender: <?=person->gender?><p>
-	     		</div>
-	     		<div class="three columns">
-	     			<p>Birth date: <?=person->birth?><p>
-	     		</div>
-	     		<div class="three columns">
-	     			<p>Email: <?=person->email?><p>
-	     		</div>
-	     		<div class="three columns">
-	     			<p>Adress: <?=person->num_adress?>
-	     				<?=person->street_adress?>
-	     				<?=person->town_adress?>
-	     				<?=person->state_adress?>
-	     				<?=person->country_adress?>
-	     			<p>
-	     		</div>
-	     	</div>
-	     	<hr>
-	     <?php endforeach; ?>
+          <?php 
+			  $this->User_model->help_parse($people, 1);
+          	  $this->User_model->help_parse($followers, 2); 
+	     	  echo '<hr>';
+		  ?>
 		  <!-- End Feed Entry -->    
 	    </div>
 	</div>

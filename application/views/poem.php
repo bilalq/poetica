@@ -4,23 +4,27 @@
     <!-- TITLE -->
     <div class="row">
       <div class="twelve columns">
-        <h3 class="full-title">The Realm of Suffering</h3>
+      <h3 class="full-title"><?=$poem['title']?></h3>
       </div>
     </div>
 
     <div class="row">
       <div class="twelve columns">
-        <h3 class="poem-category"><em>Type of Poem: Whole Verse</em></h3>
+      <h3 class="poem-category"><em>Type of Poem: <?=$poem['category']?></em></h3>
       </div>
     </div>
 
     <!-- AUTHOR -->
     <div class="row">
       <div class="twelve columns centered">
-        <p class="author">
-          <?= gravatar('bilalquadri92@gmail.com', 45) ?>
-          by Bilal Quadri
-        </p>
+        <div class="author row">
+          <div class="columns mobile-one">
+            <p><?= gravatar($poem['email'], 45) ?></p>
+          </div>
+          <div class="mobile-two credit-block columns end">
+            <p>by <?=$poem['first_name']?> <?=$poem['last_name']?> <br><?=$poem['post_time']?></p>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -29,25 +33,7 @@
     <div class="row">
       <div class="six columns end">
 <pre class="poem-full">
-After trudging through thick mist and marsh,
-I found myself lost in Grief,
-And discovered a world, cruel and harsh,
-Where Agony reigned chief.
-
-Alone at first, I was therein,
-Until Rage came and stood by my side.
-He gave me strength to his akin,
-And was there for me, when I cried.
-
-As my tears began to fall,
-They gathered around me a sea of Despair.
-I drowned in regrets, large and small,
-And not a soul in the world seemed to care.
-
-In these struggles, I was never again alone,
-For Misery always kept me company.
-I gazed at Sorrow upon his throne,
-And Darkness was all that I could see.
+<?=$poem['content']?>
 </pre>
       </div>
     </div>
@@ -57,23 +43,26 @@ And Darkness was all that I could see.
   <div class="row full-comments">
     <div class="twelve columns comments-box">
       <h5>Comments:</h5>
-      <?php for ($i = 0; $i < 10; $i++) { ?>
+      <?php foreach ($comments as $comment): ?>
         <div class="row comment-row">
           <div class="three columns offset-by-one">
-            <?= gravatar('bilalquadri92@gmail.com', 45) ?>
+            <?= gravatar($comment['email'], 45) ?>
             <p class="commenter-name">
-              Bilal Quadri:
+              <?=$comment['first_name']?> <?=$comment['last_name']?>:
               <br><br>
-              <em class="comment-timestamp">10PM Jan 3, 2012</em>
+              <em class="comment-timestamp"><?=$comment['post_time']?></em>
             </p>
           </div>
           <div class="seven columns end">
-            <p class="comment-text">I love this poem. Word is bond, yo. Like, Cool Runnings means peace be the journey.</p>
+          <p class="comment-text"><?=$comment['content']?></p>
           </div>
         </div>
-      <?php } ?>
-      <form>
-        <textarea id="new_comment" type="text" placeholder="Comment on this poem"></textarea>
+      <?php endforeach; ?>
+      <form id="comment_submit">
+        <textarea id="new_comment" name="content" type="text" placeholder="Comment on this poem"></textarea>
+        <input style="display: none;" name="poem_id" value="<?=$poem['poem_id']?>">
+        <input style="display: none;" name="user_id" value="<?=$this->session->userdata('user_id')?>">
+        <input style="display: none;" name="post_time" value="<?=now()?>">
       </form>
     </div>
   </div>

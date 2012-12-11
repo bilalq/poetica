@@ -21,7 +21,7 @@ class Poem_model extends CI_Model {
       'votes', 'title', 'content', 'post_time', 'category')
       VALUES
       (?,?,?,?,?,?,?)",
-      array($user_id, $vote, $titles, $contents, $categorys)
+      array($user_id, $votes, $titles, $contents, $categorys)
     );
     return $insert;
   }
@@ -91,7 +91,7 @@ class Poem_model extends CI_Model {
     $query = $this->db->query("
       SELECT c.user_id, c.post_time, c.content, u.email, u.first_name, u.last_name
       FROM Comments c, Users u
-      WHERE c.poem_id=?",
+      WHERE c.poem_id=? AND c.user_id=u.user_id",
       array($poem_id)
     );
 

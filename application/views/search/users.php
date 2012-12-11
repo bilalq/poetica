@@ -37,8 +37,8 @@
 				<label for="customDropdown2">Select Popularity</label>
                 <select id="customDropdown2" name="popularity">
                   <option value="">Select</option>
-                  <option value="followers">yes</option>
-                  <option value="">no</option>
+                  <option value="followers">By Followers</option>
+                  <option value="votes">By Votes</option>
                 </select>
 		</div>
 		<div class="two columns">

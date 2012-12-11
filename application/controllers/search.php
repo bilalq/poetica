@@ -7,6 +7,10 @@ class Search extends MY_Controller {
   }
 
   public function poems() {
+    $logged_in = $this->session->userdata('logged_in');
+    if (! $logged_in) {
+      redirect('/login');
+    }
 
     if($this->input->get()){
       echo 'Yep';
@@ -49,6 +53,10 @@ class Search extends MY_Controller {
   }
 
   public function users() {
+    $logged_in = $this->session->userdata('logged_in');
+    if (! $logged_in) {
+      redirect('/login');
+    }
 
     if ($this->input->post()) {
       $this->load->model("User_model");

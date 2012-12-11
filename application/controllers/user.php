@@ -3,7 +3,11 @@
 class User extends MY_Controller {
 
   public function index() {
-    $this->template->build('home/index');
+    $logged_in = $this->session->userdata('logged_in');
+    if (! $logged_in) {
+      redirect('/login');
+    }
+    redirect('home');
   }
 
   public function profile($p1) {

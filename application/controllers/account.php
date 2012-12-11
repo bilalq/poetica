@@ -27,7 +27,7 @@ class Account extends MY_Controller {
 
   public function logout() {
     $this->session->sess_destroy();
-    $this->template->build('login');
+    redirect('/login');
   }
 }
 

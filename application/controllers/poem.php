@@ -4,6 +4,11 @@ class Poem extends MY_Controller {
 
 
   public function index($poem_id) {
+    $logged_in = $this->session->userdata('logged_in');
+    if (! $logged_in) {
+      redirect('/login');
+    }
+
     $this->load->model('Poem_model');
     $poem = $this->Poem_model->get_poem($poem_id);
     $poem = (array) ($poem[0]);
@@ -21,6 +26,10 @@ class Poem extends MY_Controller {
 
 
   public function write() {
+    $logged_in = $this->session->userdata('logged_in');
+    if (! $logged_in) {
+      redirect('/login');
+    }
     $this->template->build('compose');
   }
 

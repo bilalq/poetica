@@ -76,7 +76,6 @@
 			if (!empty($people)) {
           	  $this->User_model->help_parse($followers, 2); 
 			}
-	     	  echo '<hr>';
 		  ?>
 		  <!-- End Feed Entry -->    
 	    </div>

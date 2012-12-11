@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="two columns">
-    	<img src="http://placehold.it/150x150"/>
+    	<?=gravatar($profile['email'], 150)?>
     </div>
     <div class="five columns">
     	<h5>Name:</h5><?= $profile['first_name']; ?> <?= $profile['last_name']; ?>

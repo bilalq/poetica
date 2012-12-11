@@ -38,6 +38,30 @@ class User_model extends CI_Model {
       )
     );
 
+    $uid = $this->db->query("
+      SELECT u.user_id FROM Users u
+      ORDER BY u.user_id DESC LIMIT 1
+    ");
+
+    $uid = $uid->result();
+    $uid = $uid[0]->user_id;
+
+    if ($registration_succeeded) {
+      $this->db->query("
+        INSERT INTO `Education` (user_id, school, start, end, major)
+        VALUES
+        (?, 'None', '2012-12-11', '2013-12-21', 'English')",
+        array($uid)
+      );
+
+      $this->db->query("
+        INSERT INTO `Employment` (user_id, job_title, employer, e_address, salary, start, end)
+        VALUES
+        (?, 'Writer', 'Unemployed', 'unemployment@us.gov', 10, '2012-10-10', '2012-12-21')",
+        array($uid)
+      );
+    }
+
     return $registration_succeeded;
   }
 
@@ -212,8 +236,8 @@ class User_model extends CI_Model {
 			(SELECT f.followee, COUNT(f.follower) AS followers FROM Followings f GROUP BY f.followee) AS f ON u.user_id=f.followee
 			LEFT JOIN
 			(SELECT c.user_id, COUNT(c.user_id) AS comments FROM Comments c GROUP BY c.user_id) AS c ON u.user_id=c.user_id
-			LEFT JOIN Employment w ON u.user_id=w.user_id
-			LEFT JOIN Education e ON u.user_id=e.user_id
+			RIGHT JOIN Employment w ON u.user_id=w.user_id
+			RIGHT JOIN Education e ON u.user_id=e.user_id
 		WHERE u.first_name like ? AND e.school like ? AND w.employer like ? AND u.birth_date > ? AND u.gender LIKE ? AND u.country_address like ?
 		ORDER BY ".$popular." DESC, ".$writing." DESC;",
 		array($pname, $edu, $work, $age, $gender, $country)

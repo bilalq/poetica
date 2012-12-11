@@ -159,15 +159,15 @@ class Poem_model extends CI_Model {
     $query = $this->db->query("
       SELECT *
       FROM Poems p
-      ORDER BY p.post_time LIMIT 10;",
-      );
+      ORDER BY p.post_time LIMIT 10;"
+    );
 
     return $query->result();
   }
 
   public function my_recent_poems($user_id){
 
-    if(!empty($user_id){
+    if(!empty($user_id)){
 
       $query = $this->db->query("
         SELECT * 
@@ -239,7 +239,7 @@ class Poem_model extends CI_Model {
         AND u.user_id IN (SELECT distinct u.user_id 
                           FROM Users u, Poems p
                           WHERE u.user_id = p.user_id 
-                          AND p.category = ?); "
+                          AND p.category = ?); ",
         array($category_1, $category_2)
         );
 
@@ -307,7 +307,7 @@ class Poem_model extends CI_Model {
 
 
 
-      ")
+      ");
 
     return $query->result();
   }

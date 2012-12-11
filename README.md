@@ -12,6 +12,9 @@ URI routes are defined as `controller_name/function_name/arg1/arg2/...`
 Some routes are explicitly overriden in `application/config/routes.php`
 
 
+An inverted index of words in poems to poem ids can be found at `/invert`
+
+
 
 ##Application Structure
 ```

@@ -309,5 +309,26 @@ class Poem_model extends CI_Model {
   }
 
 
+  public function invert() {
+    $text = $this->db->query("
+      SELECT p.content
+      FROM poems p
+    ");
+
+    return $text->result();
+  }
+
+  public function poems_with_word($word) {
+
+    $fix = substr($this->db->escape($word), 1, -1);
+
+    $poems = $this->db->query("
+      SELECT p.poem_id
+      FROM Poems p
+      WHERE p.content LIKE '%".$fix."%'"
+    );
+
+    return $poems->result();
+  }
 
 }

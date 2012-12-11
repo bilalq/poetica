@@ -262,6 +262,7 @@ class Poem_model extends CI_Model {
       GROUP BY u.user_id AND p.category) as b
       WHERE b.avgVotes >= ((a.avgCat*.03)+a.avgCat)
             AND b.category = a.category) as con2,
+    (Select a.* FROM
     (SELECT u.*, COUNT(*) as pcount , p.category
     FROm Users u, Poems p
     WHERE u.user_id = p.user_id
@@ -275,7 +276,7 @@ class Poem_model extends CI_Model {
     WHERE a.pcount >= ((b2.avgCount*.05)+b2.avgCount)
     AND a.category = b2.category) as con1
     WHERE u.user_id=con1.user_id AND u.user_id=con2.user_id
-    AND con1.user_id=con2.user_id
+    AND con1.user_id=con2.user_id;
       ");
 
     return $query->result();

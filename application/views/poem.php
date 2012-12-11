@@ -58,8 +58,11 @@
           </div>
         </div>
       <?php endforeach; ?>
-      <form>
-        <textarea id="new_comment" type="text" placeholder="Comment on this poem"></textarea>
+      <form id="comment_submit">
+        <textarea id="new_comment" name="content" type="text" placeholder="Comment on this poem"></textarea>
+        <input style="display: none;" name="poem_id" value="<?=$poem['poem_id']?>">
+        <input style="display: none;" name="user_id" value="<?=$this->session->userdata('user_id')?>">
+        <input style="display: none;" name="post_time" value="<?=now()?>">
       </form>
     </div>
   </div>

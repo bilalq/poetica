@@ -2,6 +2,7 @@
 
 class Poem extends MY_Controller {
 
+
   public function index($poem_id) {
     $this->load->model('Poem_model');
     $poem = $this->Poem_model->get_poem($poem_id);
@@ -12,12 +13,26 @@ class Poem extends MY_Controller {
       $comments[$i] = (array) $comments[$i];
     }
 
-    $this->template->append_metadata('<script type="text/javascript" src="/public/javascripts/poem.js"></script>');
+    $this->template->append_metadata(
+      '<script type="text/javascript" src="/public/javascripts/poem.js"></script>'
+    );
     $this->template->build('poem', array('poem' => $poem, 'comments' => $comments));
   }
 
+
   public function write() {
     $this->template->build('compose');
+  }
+
+
+  public function comment() {
+    $comment = $this->input->post();
+    if (empty($comment)) {
+      echo '';
+    }
+    else {
+      var_dump($comment);
+    }
   }
 
 }

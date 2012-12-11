@@ -1,12 +1,21 @@
-Poetia
+Poetica
 ======
 
 A social network for poets
 
+This application was built using MySQL and CodeIgniter, an MVC
+(Model-View-Controller) framework for PHP.
+
+URL routes are defined as `controller_name/function_name/arg1/arg2/...`
+
+Some routes are explicitly overriden in `application/config/routes.php`
+
+SQL queries are all definied within models
+
 
 ##Application Structure
 ```
-.
+application
 ├── config
 │   ├── autoload.php
 │   ├── config.php
@@ -53,7 +62,7 @@ A social network for poets
 
 ##Javascripts/Stylesheets
 ```
-.
+public
 ├── favicon.png
 ├── images
 │   ├── bookandpen.jpg

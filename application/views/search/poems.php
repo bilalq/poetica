@@ -19,16 +19,16 @@
                 </select>
 		</div>
 		<div class="two columns">
-			<label for="customDropdown">Sort by Oldest</label>
-                <select id="customDropdown" name="Age">
+			<label for="customDropdown2">Sort by Oldest</label>
+                <select id="customDropdown2" name="Age">
                   <option value="">Select</option>
                   <option>Yes</option>
                   <option value="">No</option>
                 </select>
 		</div>
 		<div class="two columns">
-			<label for="customDropdown">Select ABC Order</label>
-                <select id="customDropdown" name="ABC">
+			<label for="customDropdown3">Select ABC Order</label>
+                <select id="customDropdown3" name="ABC">
                   <option>No Order</option>
                   <option>A-Z</option>
                   <option>Z-A</option>
@@ -40,30 +40,21 @@
 			</div>
 		</div>	
 	</div>
-	<div class="row">
-		<label for="customDropdown">Select Category</label>
-                <select id="customDropdown" name="Category">
-                  <option value="">All</option>
-                  <option value="Free Verse">Free verse</option>
-                  <option value="Blank Verse">Blank Verse</option>
-                  <option value="Haiku">Haiku</option>
-                  <option value="Verse">Verse</option>
-                  <option value="Misc">Misc</option>
-                </select>
-	</div>
 
 	  <div class="three columns">
 	      <div class="panel">
 	        <img src="/public/images/bookandpen.jpg" />
-	        <h5><a href="#">Poem Categories</a></h5>
+	        <h5><a href="#"><label for="customDropdown4">Poem Categories</label></a></h5>
 	        
 	        <dl class="vertical tabs">
-	        	<dd><a value='All'>All</a></dd>
-	          	<dd><a value="Free Verse">Free Verse</a></dd>
-	          	<dd><a value="Blank Verse">Blank Verse</a></dd>
-	          	<dd><a value="Haiku">Haiku</a></dd>
-	          	<dd><a value="Verse">Verse</a></dd>
-	          	<dd><a values="Misc">Misc</a></dd>
+            <select id="customDropdown4" name="Category">
+	        	<dd><option value=""><a value='All'>All</a></option></dd>
+	          	<dd><option value="Free Verse"><a value="Free Verse">Free Verse</a></option></dd>
+	          	<dd><option value="Blank Verse"><a value="Blank Verse">Blank Verse</a></option></dd>
+	          	<dd><option value="Haiku"><a value="Haiku">Haiku</a></option></dd>
+	          	<dd><option value="Verse"><a value="Verse">Verse</a></option></dd>
+	          	<dd><option value="Misc"><a values="Misc">Misc</a></option></dd>
+            </select>
 	        </dl>
 	        
 	      </div>
@@ -80,7 +71,7 @@
 	    <!-- End of Sidebar -->
 
 	    <!-- Main Feed -->
-	    <div class="nine columns">
+	    <div class="twelve columns">
 	      
 	      <!-- Feed Entry -->
 	      <?php foreach($poems as $poem): ?>
@@ -89,14 +80,16 @@
 	      	<h3><strong>Poem:</strong></h3>
 	      	<div class="twelve columns">
 		          <div class="row">
-			      	<div class="six columns">
+			      	<div class="columns">
 			      		<?=gravatar($poem->email, 45);?>
+                    </div>
+                    <div class="six columns">
 			      		<h4>Author: 
 			      			<?= $poem->first_name; ?>
 			      			<?= $poem->last_name; ?>
 			      		</h4>
 			      	</div>
-			      	<div class="six columns">
+			      	<div class="four columns">
 			      		<h4>Title: <?= $poem->title; ?></h4>
 			      	</div>
 			      </div>
@@ -111,35 +104,34 @@
 			      </div>
 			      <hr>
 			</div>
-		</div>
-		<div class="row">
+        </div>
+			<?php if (!empty($poem->comments)) { ?>
+            <div class="row">
 			<div class="two colums">
 				<h3><strong>Comments:</strong></h3>
 			</div>
 			<div class="ten columns">
-				<?php for($i = 0; $i < count($poem->comments); $i++) {?>
+				<?php 
+					for($i = 0; $i < count($poem->comments); $i++) {?>
 			      		<div class="row">
 			      			<div style="overflow:scroll" class="twelve columns">
 			      				<h5><?= $poem->comments[$i]['comment_name1']; ?> 
 			      					<?= $poem->comments[$i]['comment_name2']; ?>
 			      				</h5>
 
-			      				<p>Comment:
-			      					<?= $poem->comments[$i]['comment']; ?></p>
+			      				<p>Comment: <?= $poem->comments[$i]['comment']; ?></p>
 			      				<p><?= $poem->comments[$i]['post']; ?></p>
-			      			</div>
-			      			<div  class="eight columns">
-
 			      			</div>
 			      		</div>
 			      		<hr>
 			     <?php } ?>
+            </div>
 		    </div>
+            <?php } ?>
 		<?php endforeach; ?>
 		</div>
 
 		  <!-- End Feed Entry -->
-	      <hr>
 	      
 	      
 	    </div>

@@ -13,20 +13,17 @@ class Search extends MY_Controller {
     }
 
     if($this->input->get()){
-      echo 'Yep';
       $this->load->model('Poem_model');
       $args = $this->input->get();
-      echo $args['Category'];
-      echo $args['Author'];
       $poems = $this->Poem_model->get_poems(
         $args['Author'], 
         $args['Title'], 
         $args['Popularity'],
         $args['Age'], 
-        $args['ABC']
+        $args['ABC'],
         $args['Category']
         );
-      echo "Middle";
+		
       for ($i=0; $i < count($poems); $i++) { 
         $comments = $this->Poem_model->search_get_comments($poems[$i]->poem_id);
         for ($j=0; $j < count($comments); $j++) { 
@@ -40,13 +37,14 @@ class Search extends MY_Controller {
           $poems[$i]->comments = array();
         }
       }
-      echo "End";
+	  
       if(!empty($poems)){
         $this->template->build('search/poems', array("poems" => $poems));
-      }
+      } else {
+      	$this->template->build('search/poems', array("poems" => array()));
+	  }
     }
     else{
-      echo "Nope";
       $this->template->build('search/poems', array("poems" => array()));
     }
   }

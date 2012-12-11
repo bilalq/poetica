@@ -30,44 +30,34 @@ class Poem_model extends CI_Model {
 
   public function get_poems($authors, $titles, $popularity, $age, $abc, $category){
 
-    echo 'Titles '.$titles;
     $authors = !empty($authors) ? $authors : "%";
     $titles = !empty($titles) ? $titles : "%";
     $category = !empty($category) ? $category : "%";
 
-    echo '<br>';
-    echo 'Values';
-    echo '<br>';
-    echo $authors;
-    echo '<br>';
-    echo $titles;
     $search = null;
     if(!empty($popularity)){
-      $popularity = !empty($popularity) ? $popularity : "%";
       $search = $this->db->query("
         SELECT u.first_name, u.last_name, u.email, p.poem_id, p.title, p.votes, p.content, p.post_time
         FROM Users u, Poems p
-        WHERE p.category=? AND u.first_name LIKE ? AND u.user_id=p.user_id AND p.title LIKE ?
+        WHERE p.category LIKE ? AND u.first_name LIKE ? AND u.user_id=p.user_id AND p.title LIKE ?
         ORDER BY ? DESC",
         array($category, $authors, $titles, "p.votes")
       );
     }
     else if(!empty($age)){
-      $age = !empty($age) ? $age : "%";
       $search = $this->db->query("
         SELECT u.first_name, u.last_name, u.email, p.poem_id, p.title, p.votes, p.content, p.post_time
         FROM Users u, Poems p
-        WHERE p.category=? AND u.first_name LIKE ? AND u.user_id=p.user_id AND p.title LIKE ?
+        WHERE p.category LIKE ? AND u.first_name LIKE ? AND u.user_id=p.user_id AND p.title LIKE ?
         ORDER BY ?",
         array($category, $authors, $titles, 'u.birth_date')
       );
     }
     else if(!empty($abc)){
-      $abc = !empty($abc) ? $abc : "%";
       $search = $this->db->query("
         SELECT u.first_name, u.last_name, u.email, p.poem_id, p.title, p.votes, p.content, p.post_time
         FROM Users u, Poems p
-        WHERE p.category=? AND u.first_name LIKE ? AND u.user_id=p.user_id AND p.title LIKE ?
+        WHERE p.category LIKE ? AND u.first_name LIKE ? AND u.user_id=p.user_id AND p.title LIKE ?
         ORDER BY ?",
         array($category, $authors, $titles, 'u.first_name')
       );

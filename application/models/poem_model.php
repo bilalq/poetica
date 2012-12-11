@@ -29,12 +29,18 @@ class Poem_model extends CI_Model {
 
   function get_poems($authors, $titles, $popularity, $age, $abc){
 
-    $authors = !isset($authors) ? $authors : '%';
-    $titles = !isset($titles) ? $titles : '%';
-    $popularity = !isset($popularity) ? $popularity : '%';
-    $age = !isset($age) ? $age : '%';
-    $abc = !isset($abc) ? $abc : '%';
-
+    echo 'Titles '.$titles;
+    $authors = !empty($authors) ? $authors : "%";
+    $titles = !empty($titles) ? $titles : "%";
+    $popularity = !empty($popularity) ? $popularity : "%";
+    $age = !empty($age) ? $age : "%";
+    $abc = !empty($abc) ? $abc : "%";
+    echo '<br>';
+    echo 'Values'; 
+    echo '<br>';
+    echo $authors;
+    echo '<br>';
+    echo $titles;
     $search = $this->db->query("
       SELECT u.first_name, u.last_name, p.poem_id, p.title, p.votes, p.content, p.post_time
       FROM Users u, Poems p

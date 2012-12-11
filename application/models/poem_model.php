@@ -33,36 +33,19 @@ class Poem_model extends CI_Model {
     $authors = !empty($authors) ? $authors : "%";
     $titles = !empty($titles) ? $titles : "%";
     $category = !empty($category) ? $category : "%";
-
-    $search = null;
-    if(!empty($popularity)){
-      $search = $this->db->query("
+	
+	
+	$popularity = !empty($popularity) ? "p.votes" : "'%'";
+	$age = !empty($age) ? "p.post_time" : "'%'";
+	$abc = !empty($abc) ? "u.first_name" : "'%'";
+	$search = $this->db->query("
         SELECT u.first_name, u.last_name, u.email, p.poem_id, p.title, p.votes, p.content, p.post_time
         FROM Users u, Poems p
         WHERE p.category LIKE ? AND u.first_name LIKE ? AND u.user_id=p.user_id AND p.title LIKE ?
-        ORDER BY ? DESC",
-        array($category, $authors, $titles, "p.votes")
+        ORDER BY ".$popularity." DESC, ".$age." DESC, ".$abc." DESC",
+        array($category, $authors, $titles)
       );
-    }
-    else if(!empty($age)){
-      $search = $this->db->query("
-        SELECT u.first_name, u.last_name, u.email, p.poem_id, p.title, p.votes, p.content, p.post_time
-        FROM Users u, Poems p
-        WHERE p.category LIKE ? AND u.first_name LIKE ? AND u.user_id=p.user_id AND p.title LIKE ?
-        ORDER BY ?",
-        array($category, $authors, $titles, 'u.birth_date')
-      );
-    }
-    else if(!empty($abc)){
-      $search = $this->db->query("
-        SELECT u.first_name, u.last_name, u.email, p.poem_id, p.title, p.votes, p.content, p.post_time
-        FROM Users u, Poems p
-        WHERE p.category LIKE ? AND u.first_name LIKE ? AND u.user_id=p.user_id AND p.title LIKE ?
-        ORDER BY ?",
-        array($category, $authors, $titles, 'u.first_name')
-      );
-    }
-
+	  
     return $search->result();
   }
 

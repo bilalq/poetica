@@ -13,25 +13,22 @@
 		<div class="two columns">
 			<label for="customDropdown">Get Most Popularity</label>
                 <select id="customDropdown" name="Popularity">
-                  <option value="">Select</option>
-                  <option>Yes</option>
                   <option value="">No</option>
+                  <option value="yes">Yes</option>
                 </select>
 		</div>
 		<div class="two columns">
-			<label for="customDropdown2">Sort by Oldest</label>
+			<label for="customDropdown2">Sort by Latest Poems</label>
                 <select id="customDropdown2" name="Age">
-                  <option value="">Select</option>
-                  <option>Yes</option>
                   <option value="">No</option>
+                  <option value="yes">Yes</option>
                 </select>
 		</div>
 		<div class="two columns">
 			<label for="customDropdown3">Select ABC Order</label>
                 <select id="customDropdown3" name="ABC">
-                  <option>No Order</option>
-                  <option>A-Z</option>
-                  <option>Z-A</option>
+                  <option value="">No</option>
+                  <option value="yes">Yes</option>
                 </select>
 		</div>
 		<div class="row">

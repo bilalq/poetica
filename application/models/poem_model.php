@@ -10,24 +10,25 @@ class Poem_model extends CI_Model {
   var $author = "";
 
 
-  function insert_poem($user_id, $titles, $contents, $categorys, $votes=0) {
-    if(empty($user_id) || empty($title) || empty($content)
-      || empty($category)){
+  public function insert_poem($user_id, $titles, $contents, $categorys, $votes=0) {
+    if(empty($user_id) || empty($titles) || empty($contents) || empty($categorys)){
         return null;
       }
 
+    $date = mdate('%Y-%m-%d %h:%i:%s', time());
+
     $insert = $this->db->query("
-      INSERT INTO 'Poems' ('user_id',
-      'votes', 'title', 'content', 'post_time', 'category')
+      INSERT INTO `Poems`
+      (`user_id`, `votes`, `title`, `content`, `post_time`, `category`)
       VALUES
-      (?,?,?,?,?,?,?)",
-      array($user_id, $votes, $titles, $contents, $categorys)
+      (?, ?, ?, ?, ?, ?)",
+      array($user_id, $votes, $titles, $contents, $date, $categorys)
     );
     return $insert;
   }
 
 
-  function get_poems($authors, $titles, $popularity, $age, $abc){
+  public function get_poems($authors, $titles, $popularity, $age, $abc){
 
     $authors = !isset($authors) ? $authors : '%';
     $titles = !isset($titles) ? $titles : '%';
@@ -64,7 +65,7 @@ class Poem_model extends CI_Model {
   }
 
 
-  function insert_comment($poem_id, $user_id, $content){
+  public function insert_comment($poem_id, $user_id, $content){
     if(empty($poem_id) || empty($user_id) || empty($content)){
       return null;
     }
@@ -82,7 +83,7 @@ class Poem_model extends CI_Model {
   }
 
 
-  function get_comments($poem_id){
+  public function get_comments($poem_id){
     if(empty($poem_id)){
       return null;
     }
@@ -98,18 +99,29 @@ class Poem_model extends CI_Model {
     return $query->result();
   }
 
-  function search_get_comments($poem_id){
+  public function search_get_comments($poem_id){
     if(empty($poem_id)){
       return null;
     }
 
     $query = $this->db->query("
-      SELECT c.post_time as post, c.content as comment, 
-        u.first_name as comment_name1, 
+      SELECT c.post_time as post, c.content as comment,
+        u.first_name as comment_name1,
         u.last_name as comment_name2
       FROM Comments c, Users u
       WHERE c.poem_id=? AND c.user_id = u.user_id",
       array($poem_id)
+    );
+
+    return $query->result();
+  }
+
+  public function get_last_poem_id($user_id) {
+    $query = $this->db->query("
+      SELECT poem_id FROM Poems
+      WHERE user_id=?
+      ORDER BY post_time DESC LIMIT 1;",
+      array($user_id)
     );
 
     return $query->result();

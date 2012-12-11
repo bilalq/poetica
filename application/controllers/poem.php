@@ -43,4 +43,27 @@ class Poem extends MY_Controller {
     }
   }
 
+
+  public function submit() {
+    $poem = $this->input->post();
+    $this->load->model('Poem_model');
+    $user_id = $this->session->userdata('user_id');
+
+    $insert_success = $this->Poem_model->insert_poem(
+      $user_id,
+      $poem['title'],
+      $poem['content'],
+      $poem['category'],
+      0
+    );
+
+    if ($insert_success) {
+      $id = $this->Poem_model->get_last_poem_id($user_id);
+      redirect('/poem/'.$id[0]->poem_id);
+    }
+    else {
+      redirect('/poem/write');
+    }
+  }
+
 }

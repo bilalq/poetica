@@ -48,7 +48,7 @@ class Poem_model extends CI_Model {
         FROM Users u, Poems p
         WHERE u.first_name LIKE ? AND u.user_id=p.user_id AND p.title LIKE ?
         ORDER BY ? DESC",
-        array($authors, $titles, $popularity)
+        array($authors, $titles, "p.votes")
       );
     }
     else if(!empty($age)){
@@ -58,7 +58,7 @@ class Poem_model extends CI_Model {
         FROM Users u, Poems p
         WHERE u.first_name LIKE ? AND u.user_id=p.user_id AND p.title LIKE ?
         ORDER BY ?",
-        array($authors, $titles, $age)
+        array($authors, $titles, 'u.birth_date')
       );
     }
     else if(!empty($abc)){
@@ -68,7 +68,7 @@ class Poem_model extends CI_Model {
         FROM Users u, Poems p
         WHERE u.first_name LIKE ? AND u.user_id=p.user_id AND p.title LIKE ?
         ORDER BY ?",
-        array($authors, $titles, $abc)
+        array($authors, $titles, 'u.first_name')
       );
     }
 
@@ -159,8 +159,9 @@ class Poem_model extends CI_Model {
     $query = $this->db->query("
       SELECT *
       FROM Poems p
-      ORDER BY p.post_time LIMIT 10;"
-    );
+      ORDER BY p.post_time DESC LIMIT 10;",
+      );
+>>>>>>> Fixed a few queries
 
     return $query->result();
   }
@@ -173,7 +174,7 @@ class Poem_model extends CI_Model {
         SELECT * 
         FROM Poems p
         WHERE p.user_id = ?
-        Order BY p.post_time Limit 5;",
+        Order BY p.post_time DESC Limit 5;",
         array($user_id)
         );
       return $query->result();
@@ -209,7 +210,7 @@ class Poem_model extends CI_Model {
     $query = $this->db->query("
       SELECT distinct p.*
       FROM Poems p
-      Having Count(p.votes) > 5;
+      Having p.votes > 5;
       ");
 
     return $query->result();

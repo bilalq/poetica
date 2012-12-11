@@ -161,8 +161,6 @@ class Poem_model extends CI_Model {
       FROM Poems p
       ORDER BY p.post_time DESC LIMIT 10;",
       );
->>>>>>> Fixed a few queries
-
     return $query->result();
   }
 

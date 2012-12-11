@@ -166,8 +166,8 @@ class Poem_model extends CI_Model {
         FROM Poems p
         INNER JOIN
         (SELECT u.* FROM Users u, Followings f
-        WHERE f.followee=? AND f.follower=u.user_id) as q
-        ON p.user_id = q.user_id
+        WHERE f.follower=? AND f.followee=u.user_id) as q
+        ON p.user_id=q.user_id
         Order BY p.post_time DESC LIMIT 20;",
         array($user_id)
         );

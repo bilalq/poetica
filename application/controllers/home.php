@@ -6,15 +6,58 @@ class Home extends MY_Controller {
     parent::__construct();
   }
 
+
   public function index() {
-    $this->template->build('home/index');
+    $logged_in = $this->session->userdata('logged_in');
+    if (! $logged_in) {
+      redirect('/login');
+    }
+
+    $this->load->model('Poem_model');
+    $poems = $this->Poem_model->my_recent_poems($this->session->userdata('user_id'));
+    //echo '<pre>';
+    //var_dump($poems[0]);
+    //echo '</pre>';
+    $this->template->build('home/index', array('poems' => $poems));
   }
+
+  public function feed() {
+    $logged_in = $this->session->userdata('logged_in');
+    if (! $logged_in) {
+      redirect('/login');
+    }
+
+    $this->load->model('Poem_model');
+    $poems = $this->Poem_model->get_recent_poems($this->session->userdata('user_id'));
+
+    $this->template->build('home/index', array('poems' => $poems));
+  }
+
+
+  public function friends() {
+    $logged_in = $this->session->userdata('logged_in');
+    if (! $logged_in) {
+      redirect('/login');
+    }
+
+    $this->load->model('Poem_model');
+    $poems = $this->Poem_model->followers_recent($this->session->userdata('user_id'));
+    //echo '<pre>';
+    //var_dump($poems[0]);
+    //echo '</pre>';
+    //die;
+
+    $this->template->build('home/index', array('poems' => $poems));
+  }
+
 
   public function error_page() {
     $this->template->build('error_page');
   }
 
+
   public function logout() {
     $this->template->build('home/index');
   }
+
 }

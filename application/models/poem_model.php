@@ -35,7 +35,7 @@ class Poem_model extends CI_Model {
     $titles = !empty($titles) ? $titles : "%";
 
     echo '<br>';
-    echo 'Values'; 
+    echo 'Values';
     echo '<br>';
     echo $authors;
     echo '<br>';
@@ -157,9 +157,10 @@ class Poem_model extends CI_Model {
 
   public function get_recent_poems(){
     $query = $this->db->query("
-      SELECT *
-      FROM Poems p
-      ORDER BY p.post_time LIMIT 10;"
+      SELECT p.*, u.email, u.first_name, u.last_name
+      FROM Poems p, Users u
+      WHERE p.user_id=u.user_id
+      ORDER BY p.post_time LIMIT 20;"
     );
 
     return $query->result();
@@ -170,10 +171,10 @@ class Poem_model extends CI_Model {
     if(!empty($user_id)){
 
       $query = $this->db->query("
-        SELECT * 
-        FROM Poems p
-        WHERE p.user_id = ?
-        Order BY p.post_time Limit 5;",
+        SELECT p.*, u.email, u.first_name, u.last_name
+        FROM Poems p, Users u
+        WHERE p.user_id=? AND p.user_id=u.user_id
+        Order BY p.post_time DESC LIMIT 20;",
         array($user_id)
         );
       return $query->result();
@@ -187,14 +188,14 @@ class Poem_model extends CI_Model {
     if(!empty($user_id)){
 
       $query = $this->db->query("
-        SELECT p.title, p.content, p.post_time, p.votes, 
-        p.category, q.first_name, q.last_name
-        FROM Poems p 
-        INNER JOIN 
+        SELECT p.title, p.content, p.post_time, p.votes, p.poem_id,
+        p.category, q.first_name, q.last_name, q.email
+        FROM Poems p
+        INNER JOIN
         (SELECT u.* FROM Users u, Followings f
-        WHERE f.followee = ? AND f.follower = u.user_id) as q
+        WHERE f.followee=? AND f.follower=u.user_id) as q
         ON p.user_id = q.user_id
-        Order By p.post_time LIMIT 10;",
+        Order By p.post_time LIMIT 20;",
         array($user_id)
         );
 
@@ -236,9 +237,9 @@ class Poem_model extends CI_Model {
         SELECT distinct u.*
         FROM Users u, Poems p
         WHERE u.user_id = p.user_id AND p.category = ?
-        AND u.user_id IN (SELECT distinct u.user_id 
+        AND u.user_id IN (SELECT distinct u.user_id
                           FROM Users u, Poems p
-                          WHERE u.user_id = p.user_id 
+                          WHERE u.user_id = p.user_id
                           AND p.category = ?); ",
         array($category_1, $category_2)
         );
@@ -266,8 +267,8 @@ class Poem_model extends CI_Model {
     return $query->result();
   }
 
-  /*Writer's whose number of written poems of a 
-  category is 5% higher than the average number 
+  /*Writer's whose number of written poems of a
+  category is 5% higher than the average number
   of poems for that category and writer's average number of votes is 5% higher
   then the average number of votes in said category*/
 
@@ -286,7 +287,7 @@ class Poem_model extends CI_Model {
       FROM Users u, Poems p
       WHERE u.user_id = p.user_id
       GROUP BY u.user_id AND p.category) as b
-      WHERE b.avgVotes >= ((a.avgCat*.03)+a.avgCat) 
+      WHERE b.avgVotes >= ((a.avgCat*.03)+a.avgCat)
             AND b.category = a.category) as con2,
     (SELECT u.*, COUNT(*) as pcount , p.category
     FROm Users u, Poems p

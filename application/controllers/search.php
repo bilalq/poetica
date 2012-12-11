@@ -9,20 +9,29 @@ class Search extends MY_Controller {
   public function poems() {
 
     $this->load->model('Poem_model');
-    $poems = (array) ($this->Poem_model->get_poems('Alexio', 'Food', 'p.votes', 'u.birth_date', 'u.first_name'));
-    $comments = (array) $this->Poem_model->get_comments();
-    if(!empty($poems)){
-      $this->template->build('search/poems', array("poems" => $poems));
+    $poems = ($this->Poem_model->get_poems('Alexio', 'Food', 'p.votes', 'u.birth_date', 'u.first_name'));
+    for ($i=0; $i < count($poems); $i++) { 
+      $comments = $this->Poem_model->search_get_comments($poems[$i]->poem_id);
+      for ($j=0; $j < count($comments); $j++) { 
+        $comments[$j] = (array) $comments[$j];
+      }
+     if(!empty($comments))
+      {
+        $poems[$i]->comments = $comments;
+      }
+      else{
+        $poems[$i]->comments = [];
+      }
     }
-    else {
-      echo "NO POEMS, SON";
-    }
-  }
 
-  public function users() {
-    $this->load->model("User_model");
-    $this->template->build('search/users');
-  }
+    $this->template->build('search/poems', array("poems" => $poems));
+  
+}
+
+public function users() {
+  $this->load->model("User_model");
+  $this->template->build('search/users');
+}
 
 }
 

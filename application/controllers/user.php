@@ -40,7 +40,7 @@ class User extends MY_Controller {
         $this->session->set_userdata($user);
       }
 
-      redirect('/home');
+      redirect('/home/feed');
     }
     else {
       redirect('/register');
@@ -66,5 +66,15 @@ class User extends MY_Controller {
     else {
       redirect('/login');
     }
+  }
+
+  public function follow() {
+    $target = intval($this->input->post('follow'));
+
+    $this->load->model('User_model');
+    $this->User_model->start_following(intval($this->session->userdata('user_id')), $target);
+
+
+    redirect('/search/users');
   }
 }

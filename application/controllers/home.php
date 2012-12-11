@@ -20,8 +20,8 @@ class Home extends MY_Controller {
     //echo '</pre>';
     $this->template->build('home/index', array(
       'poems' => $poems,
-      'tab1' => 'active',
-      'tab2' => '',
+      'tab1' => '',
+      'tab2' => 'active',
       'tab3' => ''
     ));
   }
@@ -37,9 +37,9 @@ class Home extends MY_Controller {
 
     $this->template->build('home/index', array(
       'poems' => $poems,
-      'tab1' => '',
+      'tab1' => 'active',
       'tab2' => '',
-      'tab3' => 'active'
+      'tab3' => ''
     ));
   }
 
@@ -60,8 +60,8 @@ class Home extends MY_Controller {
     $this->template->build('home/index', array(
       'poems' => $poems,
       'tab1' => '',
-      'tab2' => 'active',
-      'tab3' => ''
+      'tab2' => '',
+      'tab3' => 'active'
     ));
   }
 

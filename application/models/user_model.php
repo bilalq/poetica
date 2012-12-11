@@ -73,11 +73,11 @@ class User_model extends CI_Model {
     $result = $query->result();
     return $result;
   }
-  
+
   public function help_parse($objects, $option) {
 	  if( !empty($objects) ):
 	  		echo '<div class="row">';
-	      if ($option == 1) { echo '<h4>People:</h4>'; } 
+	      if ($option == 1) { echo '<h4>People:</h4>'; }
 		  else { echo '<h4>Followers:</h4>'; }
 		    echo '</div>';
 			
@@ -120,6 +120,7 @@ class User_model extends CI_Model {
 	     	echo '</p>';
 	     	echo '</div>';
 	     	echo '</div>';
+        echo '<div class="row"><form method="post" action="/user/follow"><input type="text" name="follow" value="'.$object->user_id.'" style="display: none;"><input type="submit" class="button" value="Follow"></form></div>';
 	     	endforeach;
 	  endif;
   }
@@ -177,22 +178,22 @@ class User_model extends CI_Model {
     $result = $query->result();
     return $result;
   }
-  
+
   public function get_followers($pname) {
-	  
+	
 	  $query = $this->db->query("
 	  		SELECT u2.*
 			FROM Users u JOIN Followings f ON u.user_id=f.follower JOIN Users u2 ON f.followee=u2.user_id
 			WHERE u.first_name LIKE ?;",
 			array($pname)
 	  );
-	  
+	
 	  $result = $query->result();
       return $result;
   }
 
   public function get_people($pname, $edu, $work, $age, $gender, $country, $popular, $writing) {
-	  
+	
 	  $pname	= empty($pname)		? "%" : $pname;
 	  $edu		= empty($edu)		? "%" : $edu;
 	  $work		= empty($work)		? "%" : $work;
@@ -201,11 +202,11 @@ class User_model extends CI_Model {
 	  $country	= empty($country)	? "%" : $country;
 	  $popular	= empty($popular)	? "'%'" : $popular;
 	  $writing	= empty($writing)	? "'%'" : $writing;
-	 
+	
 	$query = $this->db->query("
 	    SELECT DISTINCT u.*, p.poems AS poems, p.votes AS votes, f.followers AS followers, c.comments  AS comments
 		FROM Users u
-			LEFT JOIN 
+			LEFT JOIN
 			(SELECT p.user_id, COUNT(p.user_id) AS poems, MAX(p.votes) AS votes FROM Poems p GROUP BY p.user_id) AS p ON u.user_id=p.user_id
 			LEFT JOIN
 			(SELECT f.followee, COUNT(f.follower) AS followers FROM Followings f GROUP BY f.followee) AS f ON u.user_id=f.followee
@@ -220,5 +221,16 @@ class User_model extends CI_Model {
 	
 	$result = $query->result();
     return $result;
+  }
+
+  public function start_following($self, $user) {
+    $query_success = $this->db->query("
+      INSERT INTO `Followings` (`follower`, `followee`)
+      VALUES
+      (?, ?)",
+      array($self, $user)
+    );
+
+    return $query_success;
   }
 }

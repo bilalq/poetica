@@ -16,9 +16,8 @@ class Search extends MY_Controller {
       echo 'Yep';
       $this->load->model('Poem_model');
       $args = $this->input->get();
-      echo 'This ';
+
       echo $args['Author'];
-      echo "Inside";
       $poems = $this->Poem_model->get_poems(
         $args['Author'], 
         $args['Title'], 

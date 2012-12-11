@@ -11,19 +11,19 @@
 				<input type="text" placeholder="Title" name="Title"/>
 		</div>
 		<div class="two columns">
-			<label for="customDropdown">Select Popularity</label>
+			<label for="customDropdown">Get Most Popularity</label>
                 <select id="customDropdown" name="Popularity">
-                  <option>Select</option>
-                  <option>Most Popular</option>
-                  <option>Least Popular</option>
+                  <option value="">Select</option>
+                  <option>Yes</option>
+                  <option value="">No</option>
                 </select>
 		</div>
 		<div class="two columns">
-			<label for="customDropdown">Select Age</label>
+			<label for="customDropdown">Sort by Oldest</label>
                 <select id="customDropdown" name="Age">
-                  <option>Select</option>
-                  <option>Most Recent</option>
-                  <option>Oldest</option>
+                  <option value="">Select</option>
+                  <option>Yes</option>
+                  <option value="">No</option>
                 </select>
 		</div>
 		<div class="two columns">
@@ -70,12 +70,14 @@
 	    <div class="nine columns">
 	      
 	      <!-- Feed Entry -->
-	      <div style="overflow:scroll overflow-x:hidden" class="row">
+	      <?php foreach($poems as $poem): ?>
 
-	      	<?php foreach($poems as $poem): ?>
-	      	<div class="seven columns">
+	      <div class="row">
+	      	<h3><strong>Poem:</strong></h3>
+	      	<div class="twelve columns">
 		          <div class="row">
 			      	<div class="six columns">
+			      		<?=gravatar($poem->email, 45);?>
 			      		<h4>Author: 
 			      			<?= $poem->first_name; ?>
 			      			<?= $poem->last_name; ?>
@@ -89,14 +91,19 @@
 			      	<div class="three columns">
 			      		<p><strong>Votes: <?= $poem->votes; ?></strong></p>
 			      	</div>
-			      	<div style="overflow:scroll overflow-x:hidden" class="nine columns">
+			      	<div class="nine columns">
 			      		<p><strong>Body:</strong><br>
 			      		 <?= $poem->content; ?></p>
 			      	</div>
 			      </div>
 			      <hr>
 			</div>
-			<div style="overflow:scroll overflow-x:hidden" class="five columns">
+		</div>
+		<div class="row">
+			<div class="two colums">
+				<h3><strong>Comments:</strong></h3>
+			</div>
+			<div class="ten columns">
 				<?php for($i = 0; $i < count($poem->comments); $i++) {?>
 			      		<div class="row">
 			      			<div style="overflow:scroll" class="twelve columns">
@@ -115,8 +122,8 @@
 			      		<hr>
 			     <?php } ?>
 		    </div>
-			<?php endforeach; ?>
-		   </div>
+		<?php endforeach; ?>
+		</div>
 
 		  <!-- End Feed Entry -->
 	      <hr>

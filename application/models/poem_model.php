@@ -33,9 +33,7 @@ class Poem_model extends CI_Model {
     echo 'Titles '.$titles;
     $authors = !empty($authors) ? $authors : "%";
     $titles = !empty($titles) ? $titles : "%";
-    
-    
-    
+
     echo '<br>';
     echo 'Values'; 
     echo '<br>';
@@ -46,17 +44,17 @@ class Poem_model extends CI_Model {
     if(!empty($popularity)){
       $popularity = !empty($popularity) ? $popularity : "%";
       $search = $this->db->query("
-        SELECT u.first_name, u.last_name, p.poem_id, p.title, p.votes, p.content, p.post_time
+        SELECT u.first_name, u.last_name, u.email, p.poem_id, p.title, p.votes, p.content, p.post_time
         FROM Users u, Poems p
         WHERE u.first_name LIKE ? AND u.user_id=p.user_id AND p.title LIKE ?
-        ORDER BY ?",
+        ORDER BY ? DESC",
         array($authors, $titles, $popularity)
       );
     }
     else if(!empty($age)){
       $age = !empty($age) ? $age : "%";
       $search = $this->db->query("
-        SELECT u.first_name, u.last_name, p.poem_id, p.title, p.votes, p.content, p.post_time
+        SELECT u.first_name, u.last_name, u.email, p.poem_id, p.title, p.votes, p.content, p.post_time
         FROM Users u, Poems p
         WHERE u.first_name LIKE ? AND u.user_id=p.user_id AND p.title LIKE ?
         ORDER BY ?",
@@ -66,7 +64,7 @@ class Poem_model extends CI_Model {
     else if(!empty($abc)){
       $abc = !empty($abc) ? $abc : "%";
       $search = $this->db->query("
-        SELECT u.first_name, u.last_name, p.poem_id, p.title, p.votes, p.content, p.post_time
+        SELECT u.first_name, u.last_name, u.email, p.poem_id, p.title, p.votes, p.content, p.post_time
         FROM Users u, Poems p
         WHERE u.first_name LIKE ? AND u.user_id=p.user_id AND p.title LIKE ?
         ORDER BY ?",
@@ -157,4 +155,51 @@ class Poem_model extends CI_Model {
     return $query->result();
   }
 
+  public function get_recent_poems(){
+    $query = $this->db->query("
+      SELECT *
+      FROM Poems p
+      ORDER BY p.post_time LIMIT 10;",
+      );
+
+    return $query->result();
+  }
+
+  public function my_recent_poems($user_id){
+
+    if(!empty($user_id){
+
+      $query = $this->db->query("
+        SELECT * 
+        FROM Poems p
+        WHERE p.user_id = ?
+        Order BY p.post_time Limit 5;",
+        array($user_id)
+        );
+      return $query->result();
+    }
+
+    return null;
+  }
+
+  public function followers_recent($user_id){
+
+    if(!empty($user_id)){
+
+      $query = $this->db->query("
+        SELECT p.title, p.content, p.post_time, p.votes, 
+        p.category, u.first_name, u.last_name
+        FROM Poems p 
+        INNER JOIN 
+        (SELECT u.* FROM User u, Followings f
+        WHERE f.followee = ? AND f.follower = u.user_id) as q
+        ON p.user_id = q.user_id
+        Order By p.post_time LIMIT 10;",
+        array($user_id)
+        );
+
+      return $query->result();
+    }
+    return null;
+  }
 }

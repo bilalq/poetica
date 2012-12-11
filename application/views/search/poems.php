@@ -40,6 +40,23 @@
 			</div>
 		</div>	
 	</div>
+
+	  <div class="three columns">
+	      <div class="panel">
+	        <img src="/public/images/bookandpen.jpg" />
+	        <h5><a href="#">Poem Categories</a></h5>
+	        
+	        <dl class="vertical tabs" name='Category'>
+	        	<dd><a value='All'>All</a></dd>
+	          	<dd><a value="Free Verse">Free Verse</a></dd>
+	          	<dd><a value="Blank Verse">Blank Verse</a></dd>
+	          	<dd><a value="Haiku">Haiku</a></dd>
+	          	<dd><a value="Verse">Verse</a></dd>
+	          	<dd><a values="Misc">Misc</a></dd>
+	        </dl>
+	        
+	      </div>
+	    </div>
 </form>
 
 	<hr>
@@ -48,22 +65,7 @@
 	<!-- End of Filter -->
 	    
 	    <!-- Nav Sidebar -->
-	    <div class="three columns">
-	      <div class="panel">
-	        <img src="/public/images/bookandpen.jpg" />
-	        <h5><a href="#">Poem Categories</a></h5>
-	        
-	        <dl class="vertical tabs">
-	        	<dd><a href="#">All</a></dd>
-	          	<dd><a href="#">Free Verse</a></dd>
-	          	<dd><a href="#">Blank Verse</a></dd>
-	          	<dd><a href="#">Haiku</a></dd>
-	          	<dd><a href="#">Verse</a></dd>
-	          	<dd><a href="#">Misc</a></dd>
-	        </dl>
-	        
-	      </div>
-	    </div>
+	  
 	    <!-- End of Sidebar -->
 
 	    <!-- Main Feed -->

@@ -51,25 +51,15 @@ And Darkness was all that I could see.
 
   <!-- COMMENTS HALF -->
   <div class="comments six columns">
-    <p>comment</p>
-    <p>comment</p>
-    <p>comment</p>
-    <p>comment</p>
-    <p>comment</p>
-    <p>comment</p>
-    <p>comment</p>
-    <p>comment</p>
-    <p>comment</p>
-    <p>comment</p>
-    <p>comment</p>
-    <p>comment</p>
-    <p>comment</p>
-    <p>comment</p>
-    <p>comment</p>
-    <p>comment</p>
-    <p>comment</p>
-    <p>comment</p>
-    <p>comment</p>
+  	<hr />
+    <p><?=gravatar('huayang@poetica.com', 45)?> Hua: Too sexy.<br/><em>2012-12-11 01:05<em></p>
+    <hr />
+    <p><?=gravatar('alexmota@poetica.com', 45)?> Alexio: No, I am!<br/><em>2012-12-11 01:10</em></p>
+    <hr />
+    <p><?=gravatar('bilalquadri@poetica.com', 45)?> Bilal: Get a room guys...<br/><em>2012-12-11 01:15</em></p>
+    <hr />
+    <p><?=gravatar('billlynch@rutgers.edu', 45)?> Billy: Don't forget about me.<br/><em>2012-12-11 01:25</em></p>
+    <hr />
   </div>
 
 </div>
@@ -133,41 +123,15 @@ Truth is One, it’s absolute and final.
 
   <!-- COMMENTS HALF -->
   <div class="comments six columns">
-    <p>comment</p>
-    <p>comment</p>
-    <p>comment</p>
-    <p>comment</p>
-    <p>comment</p>
-    <p>comment</p>
-    <p>comment</p>
-    <p>comment</p>
-    <p>comment</p>
-    <p>comment</p>
-    <p>comment</p>
-    <p>comment</p>
-    <p>comment</p>
-    <p>comment</p>
-    <p>comment</p>
-    <p>comment</p>
-    <p>comment</p>
-    <p>comment</p>
-    <p>comment</p>
-    <p>comment</p>
-    <p>comment</p>
-    <p>comment</p>
-    <p>comment</p>
-    <p>comment</p>
-    <p>comment</p>
-    <p>comment</p>
-    <p>comment</p>
-    <p>comment</p>
-    <p>comment</p>
-    <p>comment</p>
-    <p>comment</p>
-    <p>comment</p>
-    <p>comment</p>
-    <p>comment</p>
-    <p>comment</p>
+    <hr />
+    <p><?=gravatar('billlynch@rutgers.edu', 45)?> Billy: ...priceless<br/><em>2012-12-11 02:25</em></p>
+    <hr />
+    <p><?=gravatar('bilalquadri@poetica.com', 45)?> Bilal: Get outta here!<br/><em>2012-12-11 02:15</em></p>
+    <hr />
+    <p><?=gravatar('alexmota@poetica.com', 45)?> Alexio: No, you get outta here!<br/><em>2012-12-11 02:10</em></p>
+    <hr />
+    <p><?=gravatar('huayang@poetica.com', 45)?> Hua: Boooooo  asdfkjasldfjalsjdfaldjfalsjdfajsflkajsdlfjalsdfjaljfdlkjadsfljalskfjdlajfdlajsdfljasfljaslfjalfjls  g gg  ghfgfgfgfgfh asdfasd<br/><em>2012-12-11 02:05</em></p>
+    <hr />
   </div>
 
 </div>
@@ -225,9 +189,11 @@ Everyday story of a commuter’s morning.
 
   <!-- COMMENTS HALF -->
   <div class="comments six columns">
-    <p>comment</p>
-    <p>comment</p>
-    <p>comment</p>
+    <hr />
+    <p><?=gravatar('huayang@poetica.com', 45)?> Hua: POKEMON!.<br/><em>2012-12-11 03:05</em></p>
+    <hr />
+    <p><?=gravatar('alexmota@poetica.com', 45)?> Alexio: DIGIMON!<br/><em>2012-12-11 03:10</em></p>
+    <hr />
   </div>
 
 </div>

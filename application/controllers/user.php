@@ -64,7 +64,7 @@ class User extends MY_Controller {
       redirect('/home/');
     }
     else {
-      $this->template->build('login');
+      redirect('/login');
     }
   }
 }

@@ -161,7 +161,7 @@ class Poem_model extends CI_Model {
       SELECT p.*, u.email, u.first_name, u.last_name
       FROM Poems p, Users u
       WHERE p.user_id=u.user_id
-      ORDER BY p.post_time LIMIT 20;"
+      ORDER BY p.post_time DESC LIMIT 20;"
     );
     return $query->result();
   }
@@ -195,7 +195,7 @@ class Poem_model extends CI_Model {
         (SELECT u.* FROM Users u, Followings f
         WHERE f.followee=? AND f.follower=u.user_id) as q
         ON p.user_id = q.user_id
-        Order By p.post_time LIMIT 20;",
+        Order BY p.post_time DESC LIMIT 20;",
         array($user_id)
         );
 

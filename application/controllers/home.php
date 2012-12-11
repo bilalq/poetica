@@ -18,7 +18,12 @@ class Home extends MY_Controller {
     //echo '<pre>';
     //var_dump($poems[0]);
     //echo '</pre>';
-    $this->template->build('home/index', array('poems' => $poems));
+    $this->template->build('home/index', array(
+      'poems' => $poems,
+      'tab1' => 'active',
+      'tab2' => '',
+      'tab3' => ''
+    ));
   }
 
   public function feed() {
@@ -30,7 +35,12 @@ class Home extends MY_Controller {
     $this->load->model('Poem_model');
     $poems = $this->Poem_model->get_recent_poems($this->session->userdata('user_id'));
 
-    $this->template->build('home/index', array('poems' => $poems));
+    $this->template->build('home/index', array(
+      'poems' => $poems,
+      'tab1' => '',
+      'tab2' => '',
+      'tab3' => 'active'
+    ));
   }
 
 
@@ -47,7 +57,12 @@ class Home extends MY_Controller {
     //echo '</pre>';
     //die;
 
-    $this->template->build('home/index', array('poems' => $poems));
+    $this->template->build('home/index', array(
+      'poems' => $poems,
+      'tab1' => '',
+      'tab2' => 'active',
+      'tab3' => ''
+    ));
   }
 
 

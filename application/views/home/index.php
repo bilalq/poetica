@@ -1,3 +1,9 @@
+<dl class="tabs pill">
+  <dd class="<?=$tab1?>"><a href="/home">My Poems</a></dd>
+  <dd class="<?=$tab2?>"><a href="/home/friends">My Follower's Poems</a></dd>
+  <dd class="<?=$tab3?>"><a href="/home/feed">Global Feed</a></dd>
+</dl>
+
 <?php foreach ($poems as $poem): ?>
 <div class="entry panel row">
   <!-- POEM HALF -->

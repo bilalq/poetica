@@ -4,13 +4,13 @@ Poetica
 _A social network for poets_
 
 This application was built using MySQL and CodeIgniter, an MVC
-(Model-View-Controller) framework for PHP.
+(Model-View-Controller) framework for PHP. SQL queries are all defined in
+models.
 
-URL routes are defined as `controller_name/function_name/arg1/arg2/...`
+URI routes are defined as `controller_name/function_name/arg1/arg2/...`
 
 Some routes are explicitly overriden in `application/config/routes.php`
 
-SQL queries are all definied within models
 
 
 ##Application Structure

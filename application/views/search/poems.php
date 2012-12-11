@@ -41,18 +41,6 @@
 		</div>	
 	</div>
 </form>
-	<?php 
-		/*if(isset($_GET['Submit']))
-		{
-			$author = $_GET['Author'];
-			$title = $_GET['Title'];
-			$popularity = $_GET['Popularity'];
-			$age = $_GET['Age'];
-			$abc = $_GET['ABC'];
-			$array = array($author, $title, $popularity, $age, $abc, $array);
-		}*/
-	?>
-
 
 	<hr>
 	<div class="row">    

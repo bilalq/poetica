@@ -17,33 +17,32 @@ class Search extends MY_Controller {
       $this->load->model('Poem_model');
       $args = $this->input->get();
       echo 'This ';
-      if(!empty($args['Author']) || !empty($args['Title'])){
-        echo $args['Author'];
-
-        $poems = $this->Poem_model->get_poems(
-          $args['Author'], 
-          $args['Title'], 
-          'p.votes',
-          'u.birth_date', 
-          'u.first_name'
-          );
-        for ($i=0; $i < count($poems); $i++) { 
-          $comments = $this->Poem_model->search_get_comments($poems[$i]->poem_id);
-          for ($j=0; $j < count($comments); $j++) { 
-            $comments[$j] = (array) $comments[$j];
-          }
-
-          if(!empty($comments)) {
-            $poems[$i]->comments = $comments;
-          }
-          else{
-            $poems[$i]->comments = array();
-          }
+      echo $args['Author'];
+      echo "Inside";
+      $poems = $this->Poem_model->get_poems(
+        $args['Author'], 
+        $args['Title'], 
+        $args['Popularity'],
+        $args['Age'], 
+        $args['ABC']
+        );
+      echo "Middle";
+      for ($i=0; $i < count($poems); $i++) { 
+        $comments = $this->Poem_model->search_get_comments($poems[$i]->poem_id);
+        for ($j=0; $j < count($comments); $j++) { 
+          $comments[$j] = (array) $comments[$j];
         }
 
-        if(!empty($poems)){
-          $this->template->build('search/poems', array("poems" => $poems));
+        if(!empty($comments)) {
+          $poems[$i]->comments = $comments;
         }
+        else{
+          $poems[$i]->comments = array();
+        }
+      }
+      echo "End";
+      if(!empty($poems)){
+        $this->template->build('search/poems', array("poems" => $poems));
       }
     }
     else{

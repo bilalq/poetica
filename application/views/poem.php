@@ -19,7 +19,7 @@
       <div class="twelve columns centered">
         <p class="author">
           <?= gravatar($poem['email'], 45) ?>
-          by <?=$poem['first_name']?> <?=$poem['last_name']?>
+          by <?=$poem['first_name']?> <?=$poem['last_name']?> on <?=$poem['post_time']?>
         </p>
       </div>
     </div>
@@ -39,21 +39,21 @@
   <div class="row full-comments">
     <div class="twelve columns comments-box">
       <h5>Comments:</h5>
-      <?php for ($i = 0; $i < 10; $i++) { ?>
+      <?php foreach ($comments as $comment): ?>
         <div class="row comment-row">
           <div class="three columns offset-by-one">
-            <?= gravatar('bilalquadri92@gmail.com', 45) ?>
+            <?= gravatar($comment['email'], 45) ?>
             <p class="commenter-name">
-              Bilal Quadri:
+              <?=$comment['first_name']?> <?=$comment['last_name']?>:
               <br><br>
-              <em class="comment-timestamp">10PM Jan 3, 2012</em>
+              <em class="comment-timestamp"><?=$comment['post_time']?></em>
             </p>
           </div>
           <div class="seven columns end">
-            <p class="comment-text">I love this poem. Word is bond, yo. Like, Cool Runnings means peace be the journey.</p>
+          <p class="comment-text"><?=$comment['content']?></p>
           </div>
         </div>
-      <?php } ?>
+      <?php endforeach; ?>
       <form>
         <textarea id="new_comment" type="text" placeholder="Comment on this poem"></textarea>
       </form>

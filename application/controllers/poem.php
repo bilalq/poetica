@@ -7,16 +7,10 @@ class Poem extends MY_Controller {
     $poem = $this->Poem_model->get_poem($poem_id);
     $poem = (array) ($poem[0]);
 
-    echo '<pre>';
-    var_dump($poem);
-    echo '</pre><br><br><br>';
-
-    echo '<pre>';
     $comments = $this->Poem_model->get_comments($poem_id);
-    var_dump($comments);
-    echo '</pre>';
-    //die;
-    //$poem = "";
+    for ($i = 0; $i < count($comments); $i++) {
+      $comments[$i] = (array) $comments[$i];
+    }
 
     $this->template->append_metadata('<script type="text/javascript" src="/public/javascripts/poem.js"></script>');
     $this->template->build('poem', array('poem' => $poem, 'comments' => $comments));

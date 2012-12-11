@@ -112,20 +112,24 @@
 			      <hr>
 			</div>
 			<div style="overflow:scroll overflow-x:hidden" class="five columns">
-			      		<?php foreach($poem->comments as $comment): ?>
+				<?php for($i = 0; $i < count($poem->comments); $i++) {?>
 			      		<div class="row">
-			      			<div class="four columns">
-			      				<h5><?= $comment->name; ?></h5>
-			      				<p><?= $comment->post_time; ?></p>
+			      			<div style="overflow:scroll" class="twelve columns">
+			      				<h5><?= $poem->comments[$i]['comment_name1']; ?> 
+			      					<?= $poem->comments[$i]['comment_name2']; ?>
+			      				</h5>
+
+			      				<p>Comment:
+			      					<?= $poem->comments[$i]['comment']; ?></p>
+			      				<p><?= $poem->comments[$i]['post']; ?></p>
 			      			</div>
-			      			<div style="overflow:scroll" class="eight columns">
-			      				<p><?= $comment->content; ?></p>
+			      			<div  class="eight columns">
+
 			      			</div>
 			      		</div>
 			      		<hr>
-			      		<?php endforeach; ?>
+			     <?php } ?>
 		    </div>
-
 			<?php endforeach; ?>
 		   </div>
 

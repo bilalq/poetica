@@ -36,7 +36,7 @@ class Poem_model extends CI_Model {
     $abc = !isset($abc) ? $abc : '%';
 
     $search = $this->db->query("
-      SELECT u.first_name, u.last_name, p.title, p.votes, p.content, p.post_time
+      SELECT u.first_name, u.last_name, p.poem_id, p.title, p.votes, p.content, p.post_time
       FROM Users u, Poems p
       WHERE u.first_name LIKE ? AND u.user_id=p.user_id AND p.title LIKE ?
       ORDER BY ? AND ? AND ?",
@@ -92,6 +92,23 @@ class Poem_model extends CI_Model {
       FROM Comments c, Users u
       WHERE c.poem_id=? AND c.user_id=u.user_id
       ORDER BY c.post_time",
+      array($poem_id)
+    );
+
+    return $query->result();
+  }
+
+  function search_get_comments($poem_id){
+    if(empty($poem_id)){
+      return null;
+    }
+
+    $query = $this->db->query("
+      SELECT c.post_time as post, c.content as comment, 
+        u.first_name as comment_name1, 
+        u.last_name as comment_name2
+      FROM Comments c, Users u
+      WHERE c.poem_id=? AND c.user_id = u.user_id",
       array($poem_id)
     );
 

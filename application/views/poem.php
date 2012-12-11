@@ -17,10 +17,14 @@
     <!-- AUTHOR -->
     <div class="row">
       <div class="twelve columns centered">
-        <p class="author">
-          <?= gravatar($poem['email'], 45) ?>
-          by <?=$poem['first_name']?> <?=$poem['last_name']?> on <?=$poem['post_time']?>
-        </p>
+        <div class="author row">
+          <div class="columns mobile-one">
+            <p><?= gravatar($poem['email'], 45) ?></p>
+          </div>
+          <div class="mobile-two credit-block columns end">
+            <p>by <?=$poem['first_name']?> <?=$poem['last_name']?> <br><?=$poem['post_time']?></p>
+          </div>
+        </div>
       </div>
     </div>
 

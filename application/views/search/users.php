@@ -24,7 +24,7 @@
                 </select>
 		</div>
 		<div class="two columns">
-				<label>Search Before Age</label>
+				<label>Search By Birth</label>
 				<input type="text" name="age" placeholder="ex: yyyy-mm-dd"/>
 		</div>
 		<div class="two columns">

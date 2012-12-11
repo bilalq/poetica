@@ -28,11 +28,12 @@ class Poem_model extends CI_Model {
   }
 
 
-  public function get_poems($authors, $titles, $popularity, $age, $abc){
+  public function get_poems($authors, $titles, $popularity, $age, $abc, $category){
 
     echo 'Titles '.$titles;
     $authors = !empty($authors) ? $authors : "%";
     $titles = !empty($titles) ? $titles : "%";
+    $category = !empty($category) ? $category : "%";
 
     echo '<br>';
     echo 'Values';
@@ -46,9 +47,9 @@ class Poem_model extends CI_Model {
       $search = $this->db->query("
         SELECT u.first_name, u.last_name, u.email, p.poem_id, p.title, p.votes, p.content, p.post_time
         FROM Users u, Poems p
-        WHERE u.first_name LIKE ? AND u.user_id=p.user_id AND p.title LIKE ?
+        WHERE p.category=? AND u.first_name LIKE ? AND u.user_id=p.user_id AND p.title LIKE ?
         ORDER BY ? DESC",
-        array($authors, $titles, $popularity)
+        array($category, $authors, $titles, "p.votes")
       );
     }
     else if(!empty($age)){
@@ -56,9 +57,9 @@ class Poem_model extends CI_Model {
       $search = $this->db->query("
         SELECT u.first_name, u.last_name, u.email, p.poem_id, p.title, p.votes, p.content, p.post_time
         FROM Users u, Poems p
-        WHERE u.first_name LIKE ? AND u.user_id=p.user_id AND p.title LIKE ?
+        WHERE p.category=? AND u.first_name LIKE ? AND u.user_id=p.user_id AND p.title LIKE ?
         ORDER BY ?",
-        array($authors, $titles, $age)
+        array($category, $authors, $titles, 'u.birth_date')
       );
     }
     else if(!empty($abc)){
@@ -66,9 +67,9 @@ class Poem_model extends CI_Model {
       $search = $this->db->query("
         SELECT u.first_name, u.last_name, u.email, p.poem_id, p.title, p.votes, p.content, p.post_time
         FROM Users u, Poems p
-        WHERE u.first_name LIKE ? AND u.user_id=p.user_id AND p.title LIKE ?
+        WHERE p.category=? AND u.first_name LIKE ? AND u.user_id=p.user_id AND p.title LIKE ?
         ORDER BY ?",
-        array($authors, $titles, $abc)
+        array($category, $authors, $titles, 'u.first_name')
       );
     }
 
@@ -162,7 +163,6 @@ class Poem_model extends CI_Model {
       WHERE p.user_id=u.user_id
       ORDER BY p.post_time LIMIT 20;"
     );
-
     return $query->result();
   }
 
@@ -210,7 +210,7 @@ class Poem_model extends CI_Model {
     $query = $this->db->query("
       SELECT distinct p.*
       FROM Poems p
-      Having Count(p.votes) > 5;
+      Having p.votes > 5;
       ");
 
     return $query->result();
@@ -303,11 +303,6 @@ class Poem_model extends CI_Model {
     AND a.category = b2.category) as con1
     WHERE u.user_id=con1.user_id AND u.user_id=con2.user_id
     AND con1.user_id=con2.user_id
-
-
-
-
-
       ");
 
     return $query->result();

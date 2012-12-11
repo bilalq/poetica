@@ -16,7 +16,7 @@ class Search extends MY_Controller {
       echo 'Yep';
       $this->load->model('Poem_model');
       $args = $this->input->get();
-
+      echo $args['Category'];
       echo $args['Author'];
       $poems = $this->Poem_model->get_poems(
         $args['Author'], 
@@ -24,6 +24,7 @@ class Search extends MY_Controller {
         $args['Popularity'],
         $args['Age'], 
         $args['ABC']
+        $args['Category']
         );
       echo "Middle";
       for ($i=0; $i < count($poems); $i++) { 
